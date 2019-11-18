@@ -14,4 +14,10 @@ public class AuthController {
         return "auth/SignIn";
     }
 
+    @RequestMapping(value={"SignUp"}, method = RequestMethod.GET)
+    public String getSignUpPage(){
+
+        return "auth/SignUp";
+    }
+
 }
