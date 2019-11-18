@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -52,7 +51,7 @@ public class Homestay implements Serializable {
 	private HomestayType type;
 	
 	@OneToMany(mappedBy = "homestay")
-	private Media medias;
+	private Set<Media> medias;
 	
 	@ManyToMany
 	@JoinTable(name = "homestay_amenity")
@@ -171,11 +170,11 @@ public class Homestay implements Serializable {
 		this.type = type;
 	}
 
-	public Media getMedias() {
+	public Set<Media> getMedias() {
 		return medias;
 	}
 
-	public void setMedias(Media medias) {
+	public void setMedias(Set<Media> medias) {
 		this.medias = medias;
 	}
 
