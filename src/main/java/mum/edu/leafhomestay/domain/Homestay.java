@@ -1,226 +1,237 @@
 package mum.edu.leafhomestay.domain;
 
+import mum.edu.leafhomestay.enumeration.HomestayStatus;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "homestay")
 public class Homestay implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	private String title;
-	
-	private String coverImage;
-	
-	private String overview;
-	
-	private int maximumGuest;
-	
-	private double area;
-	
-	private int status;
-	
-	private int numberOfRoom;
-	
-	private int numberOfBed;
-	
-	private int bedType;
-	
-	private int numberOfBathroom;
-	
-	private int price;
-	
-	@ManyToOne
-	@JoinColumn(name = "type_id")
-	private HomestayType type;
-	
-	@OneToMany(mappedBy = "homestay")
-	private Set<Media> medias;
-	
-	@ManyToMany
-	@JoinTable(name = "homestay_amenity")
-	private List<Amenity> amenities;
-	
-	@OneToOne
-	private Address address;
-	
-	@OneToMany(mappedBy = "homestay")
-	private Set<Wishlist> wishlists;
-	
-	@OneToMany(mappedBy = "homestay")
-	private Set<Booking> bookings;
-	
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private User owner;
+    private static final long serialVersionUID = 1L;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @NotEmpty
+    private String title;
 
-	public String getTitle() {
-		return title;
-	}
+    private String coverImage;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @NotEmpty
+    private String overview;
 
-	public String getCoverImage() {
-		return coverImage;
-	}
+    @NotNull
+    private int maximumGuest;
 
-	public void setCoverImage(String coverImage) {
-		this.coverImage = coverImage;
-	}
+    @NotNull
+    private double area;
 
-	public String getOverview() {
-		return overview;
-	}
+    @NotNull
+    private int status = HomestayStatus.PENDING.ordinal();
 
-	public void setOverview(String overview) {
-		this.overview = overview;
-	}
+    @NotNull
+    @Size(min = 1, message = "{homestay.size}")
+    private int numberOfRoom;
 
-	public int getMaximumGuest() {
-		return maximumGuest;
-	}
+    @NotNull
+    @Size(min = 1, message = "{homestay.size}")
+    private int numberOfBed;
 
-	public void setMaximumGuest(int maximumGuest) {
-		this.maximumGuest = maximumGuest;
-	}
+    @ManyToOne
+    @JoinColumn(name = "bedType_id")
+    private BedType bedType;
 
-	public double getArea() {
-		return area;
-	}
+    private int numberOfBathroom;
 
-	public void setArea(double area) {
-		this.area = area;
-	}
+    @NotNull
+    @Size(min = 1, message = "{homestay.price}")
+    private int price;
 
-	public int getStatus() {
-		return status;
-	}
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private HomestayType homestayType;
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
+    @OneToMany(mappedBy = "homestay")
+    private Set<Media> medias;
 
-	public int getNumberOfRoom() {
-		return numberOfRoom;
-	}
+    @ManyToMany
+    @JoinTable(name = "homestay_amenity")
+    private List<Amenity> amenities;
 
-	public void setNumberOfRoom(int numberOfRoom) {
-		this.numberOfRoom = numberOfRoom;
-	}
+    @OneToOne
+    private Address address;
 
-	public int getNumberOfBed() {
-		return numberOfBed;
-	}
+    @OneToMany(mappedBy = "homestay")
+    private Set<Wishlist> wishlists;
 
-	public void setNumberOfBed(int numberOfBed) {
-		this.numberOfBed = numberOfBed;
-	}
+    @OneToMany(mappedBy = "homestay")
+    private Set<Booking> bookings;
 
-	public int getBedType() {
-		return bedType;
-	}
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
 
-	public void setBedType(int bedType) {
-		this.bedType = bedType;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public int getNumberOfBathroom() {
-		return numberOfBathroom;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setNumberOfBathroom(int numberOfBathroom) {
-		this.numberOfBathroom = numberOfBathroom;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public String getCoverImage() {
+        return coverImage;
+    }
 
-	public HomestayType getType() {
-		return type;
-	}
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
+    }
 
-	public void setType(HomestayType type) {
-		this.type = type;
-	}
+    public String getOverview() {
+        return overview;
+    }
 
-	public Set<Media> getMedias() {
-		return medias;
-	}
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
 
-	public void setMedias(Set<Media> medias) {
-		this.medias = medias;
-	}
+    public int getMaximumGuest() {
+        return maximumGuest;
+    }
 
-	public List<Amenity> getAmenities() {
-		return amenities;
-	}
+    public void setMaximumGuest(int maximumGuest) {
+        this.maximumGuest = maximumGuest;
+    }
 
-	public void setAmenities(List<Amenity> amenities) {
-		this.amenities = amenities;
-	}
+    public double getArea() {
+        return area;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public void setArea(double area) {
+        this.area = area;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public Set<Wishlist> getWishlists() {
-		return wishlists;
-	}
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
-	public void setWishlists(Set<Wishlist> wishlists) {
-		this.wishlists = wishlists;
-	}
+    public int getNumberOfRoom() {
+        return numberOfRoom;
+    }
 
-	public Set<Booking> getBookings() {
-		return bookings;
-	}
+    public void setNumberOfRoom(int numberOfRoom) {
+        this.numberOfRoom = numberOfRoom;
+    }
 
-	public void setBookings(Set<Booking> bookings) {
-		this.bookings = bookings;
-	}
+    public int getNumberOfBed() {
+        return numberOfBed;
+    }
 
-	public User getOwner() {
-		return owner;
-	}
+    public void setNumberOfBed(int numberOfBed) {
+        this.numberOfBed = numberOfBed;
+    }
 
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-	
-	
+    public BedType getBedType() {
+        return bedType;
+    }
+
+    public void setBedType(BedType bedType) {
+        this.bedType = bedType;
+    }
+
+
+    public int getNumberOfBathroom() {
+        return numberOfBathroom;
+    }
+
+    public void setNumberOfBathroom(int numberOfBathroom) {
+        this.numberOfBathroom = numberOfBathroom;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public HomestayType getHomestayType() {
+        return homestayType;
+    }
+
+    public void setHomestayType(HomestayType homestayType) {
+        this.homestayType = homestayType;
+    }
+
+    public Set<Media> getMedias() {
+        return medias;
+    }
+
+    public void setMedias(Set<Media> medias) {
+        this.medias = medias;
+    }
+
+    public List<Amenity> getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(List<Amenity> amenities) {
+        this.amenities = amenities;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Wishlist> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(Set<Wishlist> wishlists) {
+        this.wishlists = wishlists;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+
+
 }
