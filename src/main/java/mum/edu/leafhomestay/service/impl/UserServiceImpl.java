@@ -5,11 +5,13 @@ import mum.edu.leafhomestay.repository.UserRepository;
 import mum.edu.leafhomestay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
+@Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
@@ -18,21 +20,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return null;
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
     public User register(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
-    public User get(Long id) {
-        return null;
+    public Optional<User> get(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        return userRepository.getUserByEmail(email);
     }
 }

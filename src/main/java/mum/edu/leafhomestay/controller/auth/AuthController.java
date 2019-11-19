@@ -37,7 +37,7 @@ public class AuthController {
         if(bindingResult.hasErrors()){
             return "auth/SignUp";
         }
-        //service.register(user);
+        service.register(user);
 
         //user = createUserAccount(user, bindingResult);
         //if (user == null) {

@@ -11,7 +11,7 @@ public interface UserService {
 
     public User register(User user);
 
-    public User get(Long id);
+    public Optional<User> get(Long id);
 
     public User getUserByEmail(String email);
 
