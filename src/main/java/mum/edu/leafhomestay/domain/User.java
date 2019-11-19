@@ -1,5 +1,9 @@
 package mum.edu.leafhomestay.domain;
 
+import mum.edu.leafhomestay.validator.PasswordMatches;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +18,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+
 @Entity(name = "user")
+@PasswordMatches
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,21 +28,27 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@NotBlank
+	@Email
 	private String email;
-	
+
 	private String phone;
-	
+
+	@NotBlank
 	private String password;
-	
+	private String matchingPassword;
+
+	@NotBlank
 	private String firstName;
-	
+
+	@NotBlank
 	private String lastName;
-	
+
 	private Date dob;
-	
+
 	private int status;
-	
+
 	private Integer gender;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -146,6 +158,14 @@ public class User implements Serializable {
 
 	public void setBookings(Set<Booking> bookings) {
 		this.bookings = bookings;
+	}
+
+	public String getMatchingPassword() {
+		return matchingPassword;
+	}
+
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
 	}
 	
 	

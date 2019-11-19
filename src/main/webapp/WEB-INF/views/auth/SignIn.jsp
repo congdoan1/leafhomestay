@@ -24,7 +24,7 @@
             <input type="submit" value="Login">
         </div>
 
-        <div class="form-item buttomText">
+        <div class="form-item buttomText flexRow">
             <div class="rememberMeContainer">
                 <input type="checkbox" id="rememberMe">
                 <label for="rememberMe"> Remember me </label>

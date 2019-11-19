@@ -1,10 +1,11 @@
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
     <link rel="stylesheet" href="<spring:url value='/resource/files/auth.css'/>">
-    <link rel="stylesheet" href="<spring:url value=""/>">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Sign-Up</title>
 </head>
 <body>
@@ -12,21 +13,30 @@
 <div class="form-container signup">
     <h1 class="logoText">Leaf</h1>
 
-    <form action="">
+    <form:form modelAttribute="User">
         <div class="form-item">
-            <input type="text" name="" id="" placeholder="Username">
+            <form:input id="firstName" path="firstName" type="text" placeholder="Firstname"/>
+            <form:errors path="firstName" cssClass="text-danger"/>
         </div>
 
         <div class="form-item">
-            <input type="text" name="" id="1" placeholder="Email address">
+            <form:input id="lastName" path="lastName" type="text" placeholder="Lastname"/>
+            <form:errors path="lastName" cssClass="text-danger"/>
         </div>
 
         <div class="form-item">
-            <input type="password" name="" id="2" placeholder="Password">
+            <form:input id="email" path="email" type="text" placeholder="Email"/>
+            <form:errors path="email" cssClass="text-danger"/>
         </div>
 
         <div class="form-item">
-            <input type="password" name="" id="3" placeholder="Password confirm">
+            <form:input id="password" path="password" type="password" placeholder="Passoword"/>
+            <form:errors path="password" cssClass="text-danger"/>
+        </div>
+
+        <div class="form-item">
+            <form:input path="matchingPassword" type="password" id="matchingPassword" placeholder="Confirm password"/>
+            <form:errors cssClass="text-danger"/>
         </div>
 
         <div class="form-item submitBtn">
@@ -36,7 +46,7 @@
         <div class="form-item buttomText">
             <a href="<spring:url value="/Auth/SignIn" />"> <p>Already have an account?</p> </a>
         </div>
-    </form>
+    </form:form>
 </div>
 </body>
 </html>

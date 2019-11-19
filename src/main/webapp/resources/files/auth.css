@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('//fonts.googleapis.com/css?family=Poppins&display=swap');
 
 body {
     margin:0;
@@ -42,12 +42,14 @@ label:hover{
 .signin{
     width: 400px;
     height: 400px;
+    top: 80px;
     right: 100px;
 }
 
 .signup{
     width: 450px;
-    height: 500px;
+    height: 570px;
+    top: 5%;
     left: 100px;
 }
 
@@ -70,16 +72,24 @@ form{
 
 .form-item{
     width: 75%;
-    height: 40px;
+    height: 55px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 15px;
+}
 
+.text-danger{
+    color: lightcoral;
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    padding-left: 15px;
+    text-shadow: .5px .5px rgba(0, 0, 0, .6);
 }
 
 .form-item input[type=text], input[type=password]{
     width: 100%;
+    height: 40px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
     color: white;
@@ -120,18 +130,16 @@ form{
 
 .buttomText{
     margin: 0;
-    margin-top: 10px;
+    height: 40px;
     justify-content: space-between;
 }
 .buttomText p{
-    margin-top: 20px;
     color: white;
     font-size: 12px;
     justify-self: flex-end;
 }
 
 .rememberMeContainer{
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -140,4 +148,8 @@ form{
 }
 .rememberMeContainer input[type=checkbox]{
     background-color: rgba(250, 250, 250, 1);
+}
+
+.flexRow{
+    flex-direction: row;
 }
