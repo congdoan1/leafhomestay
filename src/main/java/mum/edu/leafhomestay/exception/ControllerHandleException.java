@@ -16,8 +16,7 @@ public class ControllerHandleException {
 	
 	public static final String DEFAULT_ERROR_VIEW = "404";
 	public static final String DEFAULT_ACCESS_DENIED = "forbidden";
-	
-	
+
 
 	@ExceptionHandler(value= AccessDeniedException.class)
 	public String accessDenied()
@@ -38,5 +37,7 @@ public class ControllerHandleException {
 		
 		return mow;
 	}
+
+
 	
 }
