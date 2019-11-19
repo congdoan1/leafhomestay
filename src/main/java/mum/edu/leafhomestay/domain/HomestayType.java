@@ -20,7 +20,7 @@ public class HomestayType implements Serializable {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "type")
+	@OneToMany(mappedBy = "homestayType")
 	private Set<Homestay> homestays;
 
 	public Long getId() {
