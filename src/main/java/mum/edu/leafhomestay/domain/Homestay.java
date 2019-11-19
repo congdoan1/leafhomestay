@@ -65,6 +65,10 @@ public class Homestay implements Serializable {
 	
 	@OneToMany(mappedBy = "homestay")
 	private Set<Booking> bookings;
+	
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private User owner;
 
 	public Long getId() {
 		return id;
@@ -208,6 +212,14 @@ public class Homestay implements Serializable {
 
 	public void setBookings(Set<Booking> bookings) {
 		this.bookings = bookings;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 	
 	
