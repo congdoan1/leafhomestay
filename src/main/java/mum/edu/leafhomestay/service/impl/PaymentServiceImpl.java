@@ -13,13 +13,14 @@ import mum.edu.leafhomestay.service.PaymentService;
 @Transactional
 public class PaymentServiceImpl implements PaymentService {
 
-//	@Autowired
-//	PaymentRepository paymentRepository;
+	@Autowired
+	PaymentRepository paymentRepository;
 
-//	@Override
-//	public void savePayment(Payment payment) {
-//		// TODO Auto-generated method stub
-//		paymentRepository.save(payment);
-//	}
-
+	@Override
+	public void savePayment(Payment payment) {
+		// TODO Auto-generated method stub
+		paymentRepository.save(payment);
+	}
+ 
+	
 }

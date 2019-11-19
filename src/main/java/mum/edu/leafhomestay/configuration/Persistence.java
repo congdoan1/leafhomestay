@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("mum.edu.leafhomestay.repository")
-@EnableJpaRepositories
+@EnableJpaRepositories("mum.edu.leafhomestay.repository")
 @PropertySource(value = "classpath:application.properties")
 public class Persistence {
 

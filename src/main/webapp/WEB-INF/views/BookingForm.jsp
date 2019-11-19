@@ -4,15 +4,21 @@
 <!DOCTYPE HTML>
 <html >
 <head>
+<link href='<spring:url value="/resource/css/BookingForm.css"/>' rel="stylesheet" type="text/css">
+
 <title>Booking Form</title>
+
+
 
 </head>
 <body>
-
-<div id="global">
-<form:form  action="Book_form" method="post" >
-    <fieldset>
-        <legend>Booking Form </legend>
+<%--   <img alt="this a image"  src='<spring:url value="/resource/images/leaf_image.jpg"/>'/>
+ --%><div id="global">
+<form:form modelAttribute="book" action="Book_form" method="post" >
+     
+        <h3>Booking Form </h3>
+        <form:errors path="*" cssStyle="color : red;" /> 
+        
   		<p>ID: <input type="number" name="id"/></p>
   		
   		
@@ -20,6 +26,11 @@
 					<input type="text" name="user.userd" />
 				</p>
 				<form:errors path="user.userd" cssStyle="color : red;" /> 
+				
+				<p><spring:message code="booking.Id"/>
+					<input type="text" name="booking.Id" />
+				</p>
+				<form:errors path="booking.Id" cssStyle="color : red;" />
 				
   		<p><spring:message code="checkInDate"/>
   		<input type="date" name="checkInDate"/></p>
@@ -44,7 +55,7 @@
         <p id="buttons">
             <input id="submit" type="submit"   value="submit">
         </p>
-    </fieldset>
+   
 </form:form>
 </div>
 </body>

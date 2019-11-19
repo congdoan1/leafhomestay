@@ -39,9 +39,9 @@
                     <!-- <fieldset id="field">
                         <legend> credit cards</legend> -->
                         Payment Type?
-                        <input type="radio" name="ok" value="visa" />:Visa
-                        <input type="radio" name="ok" value="masterCard" />:Master-Card
-                        <input type="radio" name="ok" value="payPal" />:PayPal
+                        <input type="radio" name="paymentType" value="visa" />:Visa
+                        <input type="radio" name="paymentType" value="masterCard" />:Master-Card
+                        <input type="radio" name="paymentType" value="payPal" />:PayPal
 
                     <!-- </fieldset> -->
                     </p>
