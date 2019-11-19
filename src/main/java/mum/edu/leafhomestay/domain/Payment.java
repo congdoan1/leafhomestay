@@ -9,22 +9,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "payment")
 public class Payment implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@NotEmpty(message = "{NotEmpty.totalAmount}")
 	private double totalAmount;
-	
+
+	@NotNull(message = "{NotNull.paymentDate}")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDateTime paymentDate;
-	
-	private int paymentType;
-	
+
+	@NotEmpty(message = "{NotNull.paymentType}")
+	private Integer paymentType;
+
+	@NotNull(message = "{NotNull.Booking}")
 	@OneToOne
 	@JoinColumn(name = "booking_id")
 	private Booking booking;
@@ -68,6 +77,8 @@ public class Payment implements Serializable {
 	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
-	
-	
+
+	public void totalAmount() {
+		totalAmount += booking.getTotalPrice();
+	}
 }
