@@ -80,6 +80,7 @@ public class AuthController {
         newUserRole.setEmail(user.getEmail());
         newUserRole.setAuthority(user.getSelectedRole());
         user.getRoles().add(newUserRole);
+        user.setEnabled(1);
 
         service.addUser(user);
 

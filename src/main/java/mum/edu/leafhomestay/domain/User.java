@@ -38,10 +38,20 @@ public class User implements Serializable {
 	@NotBlank
 	private String lastName;
 
+	private int enabled;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private int status;
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
 
 	private Integer gender;
 	

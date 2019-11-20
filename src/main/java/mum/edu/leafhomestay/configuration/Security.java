@@ -52,7 +52,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 		//				"select u1.email, u2.authority from user u1, role u2 where u1.email = u2.email and u1.email =?");
 
 		auth.jdbcAuthentication()
-				.usersByUsernameQuery("select email, password,1 as enabled from user where email=?")
+				.usersByUsernameQuery("select email, password, enabled from user where email=?")
 				.authoritiesByUsernameQuery("select u1.email, u2.authority from user u1, role u2 where u1.email = u2.email and u1.email =?")
 				.dataSource(dataSource);
 	}
