@@ -9,29 +9,40 @@ import javax.persistence.*;
 
 @Entity(name = "user")
 public class User implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String email;
-	
+
 	private String phone;
-	
+
 	private String password;
-	
+
+	@Transient
+	private String matchingPassword;
+
+	public String getMatchingPassword() {
+		return matchingPassword;
+	}
+
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
+	}
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private Date dob;
-	
+
 	private int status;
-	
+
 	private Integer gender;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -40,10 +51,10 @@ public class User implements Serializable {
 
 	@OneToMany(mappedBy = "user")
 	private Set<Wishlist> wishlists;
-	
+
 	@OneToMany(mappedBy = "user")
 	private Set<Booking> bookings;
-	
+
 	@OneToMany(mappedBy = "owner")
 	private List<Homestay> homestays;
 
@@ -142,6 +153,6 @@ public class User implements Serializable {
 	public void setBookings(Set<Booking> bookings) {
 		this.bookings = bookings;
 	}
-	
-	
+
+
 }
