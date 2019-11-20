@@ -10,31 +10,48 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "booking")
 public class Booking implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@NotEmpty(message = "{NotEmpty.user}")
+	@Valid
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
+	@NotEmpty(message = "{NotEmpty.homesty}")
+	@Valid
 	@ManyToOne
 	@JoinColumn(name = "homestay_id")
 	private Homestay homestay;
-	
+
+	@NotNull(message = "{NotNull.checkInDate}")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDateTime checkInDate;
-	
+
+	@NotNull(message = "{NotNull.checkOutDate}")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDateTime checkOutDate;
-	
+
+	@NotNull
 	private double totalPrice;
-	
+
+	@NotEmpty(message = "{NotEmpty.payment}")
+	@Valid
 	@OneToOne
+	@JoinColumn
 	private Payment payment;
 
 	public Long getId() {
@@ -78,14 +95,10 @@ public class Booking implements Serializable {
 	}
 
 	public double getTotalPrice() {
+
+		this.totalPrice = this.homestay.getPrice()
+				* (this.getCheckOutDate().getDayOfYear() - this.getCheckInDate().getDayOfYear());
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	
-	
-	
 }
