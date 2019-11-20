@@ -4,6 +4,7 @@ import mum.edu.leafhomestay.domain.Role;
 import mum.edu.leafhomestay.domain.User;
 import mum.edu.leafhomestay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,9 @@ public class AuthController {
 
     @Autowired
     UserService service;
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
     @RequestMapping(value={"","/","login"}, method = RequestMethod.GET)
     public String getSignInPage(){
@@ -77,10 +81,13 @@ public class AuthController {
         }
 
         Role newUserRole = new Role();
-        newUserRole.setEmail(user.getEmail());
-        newUserRole.setAuthority(user.getSelectedRole());
+        //newUserRole.setEmail(user.getEmail());
+        //newUserRole.setAuthority(user.getSelectedRole());
+
         user.getRoles().add(newUserRole);
-        user.setEnabled(1);
+        user.setStatus(1);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+       // user.setMatchingPassword(passwordEncoder.encode(user.getMatchingPassword()));
 
         service.addUser(user);
 

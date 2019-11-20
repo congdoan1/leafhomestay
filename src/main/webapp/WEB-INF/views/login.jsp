@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
     <link rel="stylesheet" href="<spring:url value='/resource/files/auth.css'/>">
@@ -12,7 +13,8 @@
 <div class="form-container signin">
     <h1 class="logoText">Leaf</h1>
 
-    <form method="post" action="processLogin">
+    <form method="post" action="<spring:url value="/postlogin"></spring:url>">
+        <security:csrfInput />
         <div class="form-item">
             <input type="text" name="email" id="email" placeholder="Email">
         </div>

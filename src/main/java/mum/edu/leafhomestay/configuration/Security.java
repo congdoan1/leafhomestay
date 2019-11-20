@@ -51,10 +51,21 @@ public class Security extends WebSecurityConfigurerAdapter {
 		//				//"select u1.username, u2.authority from users u1, authorities u2 where u1.username = u2.username and u1.username =?");
 		//				"select u1.email, u2.authority from user u1, role u2 where u1.email = u2.email and u1.email =?");
 
-		auth.jdbcAuthentication()
+		/*auth.jdbcAuthentication()
 				.usersByUsernameQuery("select email, password, enabled from user where email=?")
 				.authoritiesByUsernameQuery("select u1.email, u2.authority from user u1, role u2 where u1.email = u2.email and u1.email =?")
-				.dataSource(dataSource);
+				.dataSource(dataSource);*/
+				//.passwordEncoder(passwordEncoder());
+
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder())
+				.usersByUsernameQuery("select email as username,password,status from user where email=?")
+				.authoritiesByUsernameQuery(
+						"SELECT u.email as username, r.name as role" +
+								" FROM user u" +
+								" INNER JOIN user_role ur ON u.id = ur.user_id" +
+								" INNER JOIN role r ON ur.role_id = r.id" +
+								" WHERE u.email = ?")
+				.rolePrefix("ROLE_");
 	}
 
 	@Override
@@ -64,14 +75,14 @@ public class Security extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/login/register").permitAll()
-				.anyRequest().authenticated().and().csrf().disable()
+				.anyRequest().authenticated().and()
 				//.antMatchers("/","/login","/login/**").permitAll()
 				//.anyRequest().authenticated()
 				//.and()
 				.formLogin()
 					.loginPage("/login")
 					.failureUrl("/login/failed")
-					.loginProcessingUrl("/login/processLogin")
+					.loginProcessingUrl("/postlogin")
 					.defaultSuccessUrl("/home")
 					.usernameParameter("email")
 					.passwordParameter("password")
