@@ -14,7 +14,7 @@
 <div class="form-container signin">
     <h1 class="logoText">Leaf</h1>
 
-    <form method="post" action="<spring:url value="/postlogin"/>">
+    <form method="post" action="<spring:url value="/login"/>">
         <security:csrfInput />
         <div class="form-item">
             <input type="text" name="email" id="email" placeholder="Email">

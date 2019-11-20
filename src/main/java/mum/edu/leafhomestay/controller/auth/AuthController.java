@@ -5,6 +5,7 @@ import mum.edu.leafhomestay.domain.User;
 import mum.edu.leafhomestay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
+@Controller
 public class AuthController {
 
     @Autowired
@@ -21,7 +23,7 @@ public class AuthController {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    @RequestMapping(value = {"login"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String getSignInPage() {
 
         System.out.println("Login GET is working!");

@@ -34,7 +34,7 @@
                     <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>
                     </li>
                     <li>
-                        <spring:url value="/dologout" var="logout_url" />
+                        <spring:url value="/logout" var="logout_url" />
                         <form:form action="${logout_url}" method="post">
                             <input type="submit" value="Logout">
                         </form:form>
