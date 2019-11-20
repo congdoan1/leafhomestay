@@ -1,0 +1,21 @@
+#content {
+    padding: 15px;
+}
+
+.homestay {
+    width: 45%;
+    margin: 15px;
+    display: inline-block;
+}
+
+.homestay img {
+    width: 40%;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.homestay .detail {
+    display: inline-block;
+    width: 55%;
+    vertical-align: top;
+}

@@ -2,6 +2,7 @@ package mum.edu.leafhomestay.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -47,6 +48,9 @@ public class User implements Serializable {
 	
 	@OneToMany(mappedBy = "user")
 	private Set<Booking> bookings;
+	
+	@OneToMany(mappedBy = "owner")
+	private List<Homestay> homestays;
 
 	public Long getId() {
 		return id;

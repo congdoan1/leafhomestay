@@ -5,7 +5,6 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.dozer.DozerBeanMapper;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("mum.edu.leafhomestay.repository")
 @EnableJpaRepositories("mum.edu.leafhomestay.repository")
 @PropertySource(value = "classpath:application.properties")
 public class Persistence {

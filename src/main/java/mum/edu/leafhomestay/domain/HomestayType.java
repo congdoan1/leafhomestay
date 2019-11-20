@@ -20,8 +20,8 @@ public class HomestayType implements Serializable {
 	private Long id;
 	
 	private String name;
-	@Valid
-	@OneToMany(mappedBy = "type")
+	
+	@OneToMany(mappedBy = "homestayType")
 	private Set<Homestay> homestays;
 
 	public Long getId() {
