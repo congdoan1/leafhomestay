@@ -2,6 +2,7 @@ package mum.edu.leafhomestay.service.impl;
 
 import javax.transaction.Transactional;
 
+import mum.edu.leafhomestay.domain.Role;
 import mum.edu.leafhomestay.domain.User;
 import mum.edu.leafhomestay.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,10 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-
     public void deleteUser(long id) {
         userRepository.deleteById(id);
     }
+
+    //@Override
+    //public User getUserByEmail(String email){ return userRepository.getUserByEmail(email); }
 }

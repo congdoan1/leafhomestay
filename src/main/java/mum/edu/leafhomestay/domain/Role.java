@@ -2,11 +2,7 @@ package mum.edu.leafhomestay.domain;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity(name = "role")
 public class Role {
@@ -15,10 +11,12 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
+	private String email;
+	@Column(nullable = false)
+	private String authority;
 	
-	@ManyToMany(mappedBy = "roles")
-	private Set<User> users;
+	//@ManyToMany(mappedBy = "roles")
+	//private Set<User> users;
 
 	public Long getId() {
 		return id;
@@ -28,21 +26,29 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public String getAuthority() {
+		return authority;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
+
+	//public Set<User> getUsers() {
+	//	return users;
+	//}
+
+	//public void setUsers(Set<User> users) {
+	//	this.users = users;
+	//}
 	
 	
 }

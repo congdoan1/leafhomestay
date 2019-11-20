@@ -3,20 +3,12 @@ package mum.edu.leafhomestay.domain;
 import mum.edu.leafhomestay.validator.PasswordMatches;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
 @Entity(name = "user")
@@ -37,6 +29,7 @@ public class User implements Serializable {
 
 	@NotBlank
 	private String password;
+	@Transient
 	private String matchingPassword;
 
 	@NotBlank
@@ -45,15 +38,39 @@ public class User implements Serializable {
 	@NotBlank
 	private String lastName;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private int status;
 
 	private Integer gender;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role")
-	private Set<Role> roles;
+	//@ManyToMany(fetch = FetchType.EAGER)
+	//@JoinTable(name = "user_role")
+	//private Set<Role> roles;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
+	private List<Role> roles = new ArrayList<Role>();
+
+	@Transient
+	private String selectedRole;
+
+	public String getSelectedRole() {
+		return selectedRole;
+	}
+
+	public void setSelectedRole(String selectedRole) {
+		this.selectedRole = selectedRole;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 	@OneToMany(mappedBy = "user")
 	private Set<Wishlist> wishlists;
@@ -136,13 +153,13 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
+	//public Set<Role> getRoles() {
+	//	return roles;
+	//}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+	//public void setRoles(Set<Role> roles) {
+	//	this.roles = roles;
+	//}
 
 	public Set<Wishlist> getWishlists() {
 		return wishlists;

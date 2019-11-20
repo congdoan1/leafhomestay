@@ -13,11 +13,11 @@
 
     <form action="">
         <div class="form-item">
-            <input type="text" name="" id="3" placeholder="Username">
+            <input type="text" name="email" id="3" placeholder="Email" id="email">
         </div>
 
         <div class="form-item">
-            <input type="password" name="" id="4" placeholder="Password">
+            <input type="password" name="password" id="4" placeholder="Password" id="password">
         </div>
 
         <div class="form-item submitBtn">

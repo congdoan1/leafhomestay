@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -15,18 +16,37 @@
 
     <form:form modelAttribute="User">
         <div class="form-item">
-            <form:input id="firstName" path="firstName" type="text" placeholder="Firstname"/>
-            <form:errors path="firstName" cssClass="text-danger"/>
-        </div>
-
-        <div class="form-item">
-            <form:input id="lastName" path="lastName" type="text" placeholder="Lastname"/>
-            <form:errors path="lastName" cssClass="text-danger"/>
-        </div>
-
-        <div class="form-item">
             <form:input id="email" path="email" type="text" placeholder="Email"/>
             <form:errors path="email" cssClass="text-danger"/>
+        </div>
+
+        <div class="form-item">
+            <div class="flex flexRow justifySpaceBetween">
+                <div class="seperator">
+                    <form:input id="firstName" path="firstName" type="text" placeholder="Firstname"/>
+                    <form:errors path="firstName" cssClass="text-danger"/>
+                </div>
+                <div class="marginLeft5px">
+                    <form:input id="lastName" path="lastName" type="text" placeholder="Lastname"/>
+                    <form:errors path="lastName" cssClass="text-danger"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="flex flexRow justifySpaceBetween">
+                <div class="seperator">
+                    <form:input path="dob" type="date" name="" id="datePicker" placeholder="Date of birth"/>
+                    <form:errors path="dob" cssClass="text-danger"/>
+                </div>
+                <div class="marginLeft5px">
+                    <form:select path="gender">
+                        <form:option value="0">Male</form:option>
+                        <form:option value="1">Female</form:option>
+                    </form:select>
+                    <form:errors path="gender" cssClass="text-danger"/>
+                </div>
+            </div>
         </div>
 
         <div class="form-item">
@@ -39,7 +59,15 @@
             <form:errors cssClass="text-danger"/>
         </div>
 
-        <div class="form-item submitBtn">
+        <div class="form-item">
+            <div class="rememberMeContainer buttomText flexRow flexStart">
+                <form:radiobutton id="rolehost" name="role" value="ROLE_HOST" path="selectedRole"/> <label for="rolehost"> Host </label> <br>
+                <form:radiobutton id="roleguest" name="role" value="ROLE_GUEST" path="selectedRole"/> <label for="roleguest"> Guest </label> <br>
+                <form:errors path="roles" cssClass="text-danger"/>
+            </div>
+        </div>
+
+        <div class="form-item">
             <input type="submit" value="Sign up">
         </div>
 
