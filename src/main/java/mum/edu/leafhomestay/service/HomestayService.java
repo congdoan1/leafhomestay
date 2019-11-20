@@ -12,7 +12,7 @@ public interface HomestayService {
 
     public void deleteHomeStay(Long id);
 
-    public Homestay getHomeStay(Long id);
+    public Homestay getHomestayById(Long id);
 
     public List<Homestay> getAllHomeStay();
 }

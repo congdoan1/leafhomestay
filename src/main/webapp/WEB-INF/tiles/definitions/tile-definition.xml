@@ -5,32 +5,21 @@
 <tiles-definitions>
 
     <definition name="baseLayout" template="/WEB-INF/tiles/template/layoutTemplate.jsp">
-        <put-attribute name="title" value="Leaf Homestay"/>
-        <put-attribute name="heading" value=""/>
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value=""/>
         <put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp"/>
         <put-attribute name="body" value=""/>
         <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp"/>
     </definition>
 
-    <!--  [ no need unless NO default in controller JSP reference
-          [.e.g. if controller returns "welcome" instead of "/welcome" THEN Need the following wildcard]-->
+    <definition name="/home" extends="baseLayout">
+        <put-attribute name="title" value="home.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/home.jsp"/>
+    </definition>
 
-    <!-- 	<definition name="*" extends="baseLayout">
-            <put-attribute name="title" value="{1}.title" />
-            <put-attribute name="heading" value="{1}.heading" />
-            <put-attribute name="tagline" value="{1}.tagline" />
-             <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
-        </definition>
-
-     -->
-    <!-- Wild Card for all  controllers...
-         /welcome accesses views folder for welcome JSP location
-        product/products accesses views/product folder for product JSP location
-   COMPARE WITH webstore08
-    -->
     <definition name="*/*" extends="baseLayout">
         <put-attribute name="title" value="{2}.title"/>
-        <put-attribute name="heading" value="{2}.heading"/>
+        <put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp"/>
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
     </definition>
 

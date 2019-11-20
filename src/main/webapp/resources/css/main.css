@@ -3,13 +3,11 @@ html, body {
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
-    background: #111111;
+    margin: 0;
+    padding: 0;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 12pt;
     font-weight: 200;
-    color: #FFF;
 }
 
 h1, h2, h3 {
@@ -45,125 +43,4 @@ a:hover {
     overflow: hidden;
     margin: 0em auto;
     width: 1200px;
-}
-
-#header-wrapper {
-    position: relative;
-    padding: 1.5em 0 7em 0;
-    background: #111111 url(../images/header-bg.jpg) no-repeat center;
-    background-size: cover;
-}
-
-#header {
-    padding: 0 2em;
-}
-
-#logo {
-    position: absolute;
-    left: 2em;
-}
-
-#logo img {
-    height: 100px;
-}
-
-#menu {
-    position: absolute;
-    right: 2em;
-}
-
-#menu ul {
-    display: inline-block;
-}
-
-#menu li {
-    display: block;
-    float: left;
-    text-align: center;
-}
-
-#menu li a, #menu li span {
-    padding: 1em 1.5em;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.80);
-    font-weight: 500;
-}
-
-#menu li:hover a, #menu li.active a, #menu li.active span {
-}
-
-#menu .active a {
-    border: 2px solid rgba(255, 255, 255, 1);
-    border-radius: 6px;
-    color: rgba(255, 255, 255, 1);
-}
-
-#menu .icon {
-}
-
-#search {
-    padding-top: 7em;
-}
-
-#search .title {
-    width: 55%;
-    display: inline-block;
-    vertical-align: middle;
-    padding-right: 30px;
-}
-
-#search .title h2 {
-    font-size: 4em;
-}
-
-#search .title .byline {
-    font-size: 2em;
-}
-
-#search .form {
-    width: 40%;
-    background: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#search .form .form-inside {
-    margin: 30px;
-}
-
-#search .form .form-inside .form-control {
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-    height: 2.924em;
-    border-radius: 2px;
-    border-color: #dbd8d6;
-    box-shadow: none;
-    width: 100%;
-}
-
-#search .form .form-inside .date-control  {
-    margin-top: 20px;
-}
-
-#search .form .form-inside .date-control .date {
-    width: 40%;
-    display: inline-block;
-}
-
-#search .form .form-inside .date-control .number-of-guest {
-    width: 20%;
-    display: inline-block;
-}
-
-#search .button {
-    margin-top: 2em;
-    padding: 1.40em 3em;
-    border: 2px solid rgba(255, 255, 255, 1);
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 1em;
 }

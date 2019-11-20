@@ -66,7 +66,7 @@ public class Homestay implements Serializable {
     @JoinTable(name = "homestay_amenity")
     private List<Amenity> amenities;
 
-    @OneToOne
+    @OneToOne(mappedBy = "homestay")
     private Address address;
 
     @OneToMany(mappedBy = "homestay")
