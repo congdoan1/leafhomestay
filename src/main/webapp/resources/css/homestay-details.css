@@ -1,0 +1,29 @@
+.content {
+    padding: 20px;
+}
+
+#information {
+    width: 60%;
+    display: inline-block;
+}
+
+img {
+    width: 100%;
+}
+
+#booking-container {
+    width: 35%;
+    display: inline-block;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.1);
+    vertical-align: top;
+    padding: 10px;
+}
+
+#booking-container h3 {
+    margin: 10px;
+}
+
+#booking-container .date {
+    display: inline-block;
+    width: 45%;
+}

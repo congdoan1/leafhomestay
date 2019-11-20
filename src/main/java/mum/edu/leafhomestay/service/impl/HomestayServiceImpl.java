@@ -2,6 +2,7 @@ package mum.edu.leafhomestay.service.impl;
 
 
 import mum.edu.leafhomestay.domain.Homestay;
+import mum.edu.leafhomestay.exception.HomestayNotFoundException;
 import mum.edu.leafhomestay.repository.BedTypeRepository;
 import mum.edu.leafhomestay.repository.HomestayRepository;
 import mum.edu.leafhomestay.repository.HomestayTypeRespository;
@@ -46,8 +47,8 @@ public class HomestayServiceImpl implements HomestayService {
     }
 
     @Override
-    public Homestay getHomeStay(Long id) {
-        return homeStayRepository.findById(id).orElse(null);
+    public Homestay getHomestayById(Long id) {
+        return homeStayRepository.findById(id).orElseThrow(() -> new HomestayNotFoundException(id, null));
     }
 
     @Override
