@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -32,7 +33,7 @@ public class Payment implements Serializable {
 
 	@NotEmpty(message = "{NotNull.paymentType}")
 	private Integer paymentType;
-
+     @Valid
 	@NotNull(message = "{NotNull.Booking}")
 	@OneToOne
 	@JoinColumn(name = "booking_id")

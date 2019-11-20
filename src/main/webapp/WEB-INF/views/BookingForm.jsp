@@ -22,15 +22,15 @@
   		<p>ID: <input type="number" name="id"/></p>
   		
   		
-  		<p><spring:message code="user.userId"/>
-					<input type="text" name="user.userd" />
+  		<p><spring:message code="user"/>
+					<input type="text" name="user" />
 				</p>
-				<form:errors path="user.userd" cssStyle="color : red;" /> 
+				<form:errors path="user" cssStyle="color : red;" /> 
 				
-				<p><spring:message code="booking.Id"/>
-					<input type="text" name="booking.Id" />
+				<p><spring:message code="booking"/>
+					<input type="text" name="booking" />
 				</p>
-				<form:errors path="booking.Id" cssStyle="color : red;" />
+				<form:errors path="booking" cssStyle="color : red;" />
 				
   		<p><spring:message code="checkInDate"/>
   		<input type="date" name="checkInDate"/></p>
@@ -44,9 +44,9 @@
   		 <input type="number" name="totalPrice"/></p>
   		 <form:errors path="totalPrice" cssStyle="color : red;" />
   		 
-  		 <p><spring:message code="homestay.Id"/>
-  		 <input type="text" name="homestay.Id"/></p>
-  		 <form:errors path="homestay.Id" cssStyle="color : red;" />
+  		 <p><spring:message code="homestay"/>
+  		 <input type="text" name="homestay"/></p>
+  		 <form:errors path="homestay" cssStyle="color : red;" />
   		 
   		 <p><spring:message code="payment"/>
   		 <input type="number" name="payment"/></p>
