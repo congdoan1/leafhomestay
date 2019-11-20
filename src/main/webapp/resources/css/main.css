@@ -44,3 +44,12 @@ a:hover {
     margin: 0em auto;
     width: 1200px;
 }
+
+#page-container {
+    position: relative;
+    min-height: 90vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}

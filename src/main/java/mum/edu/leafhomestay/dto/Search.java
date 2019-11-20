@@ -1,14 +1,22 @@
 package mum.edu.leafhomestay.dto;
 
-import java.util.Date;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class Search {
 
+    @NotEmpty
     private String location;
 
-    private Date dateFrom;
+    @NotNull
+    @Future
+    private LocalDate dateFrom;
 
-    private Date dateTo;
+    @NotNull
+    @Future
+    private LocalDate dateTo;
 
     private int numberOfGuest;
 
@@ -23,19 +31,19 @@ public class Search {
         this.location = location;
     }
 
-    public Date getDateFrom() {
+    public LocalDate getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(Date dateFrom) {
+    public void setDateFrom(LocalDate dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public Date getDateTo() {
+    public LocalDate getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
     }
 

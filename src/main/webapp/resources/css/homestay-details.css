@@ -7,7 +7,7 @@
     display: inline-block;
 }
 
-img {
+.cover img {
     width: 100%;
 }
 
@@ -23,7 +23,39 @@ img {
     margin: 10px;
 }
 
-#booking-container .date {
+#booking-container .form .form-inside {
+    margin: 30px;
+}
+
+#booking-container .form .form-inside .form-control {
+    font-size: inherit;
+    line-height: inherit;
+    height: 2.6em;
+    border-radius: 2px;
+    border-color: #dbd8d6;
+    box-shadow: none;
+    padding: 0 0.2em;
+    margin-top: 20px;
+}
+
+#booking-container .form .form-inside .form-control .date {
+    width: 37%;
     display: inline-block;
-    width: 45%;
+}
+
+#booking-container .form .form-inside .form-control .number-of-guest {
+    width: 18%;
+    display: inline-block;
+}
+
+#booking-container .button {
+    margin-top: 20px;
+    padding: 1em 3em;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    background-color: #6ea66d;
+    width: 100%;
+    color: #FFFFFF;
 }

@@ -2,6 +2,6 @@
 
 <link href="<spring:url value="/resource/css/footer.css"/>" rel="stylesheet" type="text/css">
 
-<footer>
-    Terms and Conditions | Privacy Statement | Cookie Settings
+<footer id="footer">
+    Copyright 2019 by Leaf Team
 </footer>

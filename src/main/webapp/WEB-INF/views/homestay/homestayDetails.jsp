@@ -30,16 +30,20 @@
     </div>
     <div id="booking-container">
         <h3>100$/2 nights</h3>
-        <form:form modelAttribute="booking" action="booking" method="post">
-            <div>
-                <form:input id="dateFrom" class="date" path="dateFrom" type="date"/>
-                <form:input id="dateFrom" class="date" path="dateTo" type="date"/>
+        <div class="form">
+            <div class="form-inside">
+                <form:form modelAttribute="search" action="booking" method="post">
+                    <div>
+                        <form:input id="dateFrom" class="form-control date" path="dateFrom" type="date"/>
+                        <form:input id="dateFrom" class="form-control  date" path="dateTo" type="date"/>
+                        <form:input id="numberOfGuest" class="form-control number-of-guest" path="numberOfGuest" type="text"/>
+                    </div>
+                    <div>
+                        <input type="submit" value="Book Now" class="button">
+                    </div>
+                </form:form>
             </div>
-            <form:input id="numberOfGuest" class="numberOfGuest" path="numberOfGuest" type="text"/>
-            <div>
-                <input type="submit" value="Book Now">
-            </div>
-        </form:form>
+        </div>
     </div>
 </div>
 </body>

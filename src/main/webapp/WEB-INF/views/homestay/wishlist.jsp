@@ -8,10 +8,7 @@
 
 <body>
 <div id="content">
-    <div>
-        <span id="number-of-nights">${numberOfNights} night${numberOfNights > 1 ? 's' : ''}</span>
-    </div>
-    <c:forEach items="${homestays}" var="homestay">
+    <c:forEach items="${wishlist}" var="homestay">
         <c:set var="url" value="/homestays/${homestay.id}"/>
         <a href="<spring:url value="${url}"/>">
             <div class="homestay">
@@ -19,17 +16,11 @@
                 <div class="detail">
                     <h4>${homestay.title}</h4>
                     <span>${homestay.overview}</span>
-                    <div class="bottom">
-                        <span class="host">${homestay.owner.firstName} ${homestay.owner.lastName}</span>
-                        <span class="price">$${homestay.price} / night</span>
-                    </div>
+                    <span class="price">${homestay.price} / night</span>
                 </div>
             </div>
         </a>
     </c:forEach>
-    <c:if test="${empty homestays}">
-        <h4 class="empty"><spring:message code="noRecords"/></h4>
-    </c:if>
 </div>
 </body>
 </html>

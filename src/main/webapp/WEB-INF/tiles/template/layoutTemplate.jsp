@@ -18,8 +18,10 @@
         <tiles:insertAttribute name="header"/>
     </div>
 
-    <div>
-        <tiles:insertAttribute name="body"/>
+    <div id="page-container">
+        <div id="content-wrap">
+            <tiles:insertAttribute name="body"/>
+        </div>
     </div>
 
     <div>

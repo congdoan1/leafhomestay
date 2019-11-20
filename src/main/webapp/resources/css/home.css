@@ -3,7 +3,7 @@
     padding: 1.5em 0 7em 0;
     background: #111111 url(../images/header-bg.jpg) no-repeat center;
     background-size: cover;
-    color: tan;
+    color: white;
 }
 
 #header {
@@ -40,8 +40,9 @@
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.8em;
-    color: tan;
+    color: white;
     font-weight: 500;
+    text-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
 }
 
 #menu li:hover a, #menu li.active a, #menu li.active span {
@@ -93,11 +94,12 @@
 #search-container .form .form-inside .form-control {
     font-size: inherit;
     line-height: inherit;
-    height: 2.924em;
+    height: 2.6em;
     border-radius: 2px;
     border-color: #dbd8d6;
     box-shadow: none;
     width: 100%;
+    padding: 0 0.2em;
 }
 
 #search-container .form .form-inside .date-control  {
@@ -105,12 +107,12 @@
 }
 
 #search-container .form .form-inside .date-control .date {
-    width: 40%;
+    width: 37%;
     display: inline-block;
 }
 
 #search-container .form .form-inside .date-control .number-of-guest {
-    width: 15%;
+    width: 18%;
     display: inline-block;
 }
 
@@ -121,7 +123,14 @@
     border-radius: 6px;
     font-weight: 700;
     font-size: 1em;
-    background-color: skyblue;
+    background-color: #6ea66d;
     width: 100%;
     color: #FFFFFF;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
 }

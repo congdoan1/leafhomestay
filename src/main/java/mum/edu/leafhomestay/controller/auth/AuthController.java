@@ -1,23 +1,27 @@
 package mum.edu.leafhomestay.controller.auth;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/Auth")
 public class AuthController {
 
-    @RequestMapping(value={"","/","SignIn"}, method = RequestMethod.GET)
-    public String getSignInPage(){
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String getSignInPage() {
 
         return "auth/SignIn";
     }
 
-    @RequestMapping(value={"SignUp"}, method = RequestMethod.GET)
-    public String getSignUpPage(){
+    @RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
+    public String getSignUpPage() {
 
         return "auth/SignUp";
     }
 
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(Model model) {
+        return "redirect:/home";
+    }
 }

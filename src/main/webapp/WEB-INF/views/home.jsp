@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 
@@ -12,14 +13,39 @@
     <div id="header" class="container">
         <div id="logo">
             <h1><a href="<spring:url value="/home" />">
-                <img src="<spring:url value="/resource/images/logo.png" />" alt="Leaf Homestay Logo">
+                <img src="<spring:url value="/resource/images/logo.png"/>" alt="Leaf Homestay Logo">
             </a></h1>
         </div>
         <div id="menu">
             <ul>
-                <li><a href="<spring:url value="/home" />"><spring:message code="navigation.host"/></a></li>
-                <li><a href="<spring:url value="/home" />"><spring:message code="navigation.signup"/></a></li>
-                <li><a href="<spring:url value="/Auth" />"><spring:message code="navigation.signin"/></a></li>
+                <security:authorize access="isAuthenticated()">
+                    <security:authorize access="hasRole('ROLE_HOST')">
+                        <li><a href="<spring:url value="/host/homestays" />"><spring:message code="navigation.homestays"/></a>
+                        </li>
+                        <li><a href="<spring:url value="/host/booking" />"><spring:message
+                                code="navigation.booking"/></a></li>
+                    </security:authorize>
+                    <security:authorize access="hasRole('ROLE_GUEST')">
+                        <li><a href="<spring:url value="/homestays/wishlist" />"><spring:message
+                                code="navigation.wishlist"/></a></li>
+                        <li><a href="<spring:url value="/booking" />"><spring:message code="navigation.booking"/></a>
+                        </li>
+                    </security:authorize>
+                    <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>
+                    </li>
+                    <li>
+                        <spring:url value="/dologout" var="logout_url" />
+                        <form:form action="${logout_url}" method="post">
+                            <input type="submit" value="Logout">
+                        </form:form>
+                    </li>
+                </security:authorize>
+                <security:authorize access="isAnonymous()">
+                    <li><a href="<spring:url value="/home" />"><spring:message code="navigation.host"/></a></li>
+                    <li><a href="<spring:url value="/signup" />"><spring:message code="navigation.signup"/></a>
+                    </li>
+                    <li><a href="<spring:url value="/login" />"><spring:message code="navigation.signin"/></a></li>
+                </security:authorize>
             </ul>
         </div>
     </div>
@@ -31,9 +57,11 @@
             <div class="form-inside">
                 <h3>Book a room in a home</h3>
                 <form action="search" method="get">
-                    <input class="form-control" name="location"
-                           placeholder="Where do you want to go?" type="text" id="search_location"
-                           required/>
+                    <div>
+                        <input class="form-control" name="location"
+                               placeholder="Where do you want to go?" type="text" id="search_location"
+                               required/>
+                    </div>
                     <div class="date-control">
                         <input class="form-control date" name="dateFrom"
                                placeholder="From" type="date" required/>
