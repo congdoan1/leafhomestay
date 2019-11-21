@@ -3,10 +3,10 @@ package mum.edu.leafhomestay.controller;
 import mum.edu.leafhomestay.domain.*;
 import mum.edu.leafhomestay.service.AmenityService;
 import mum.edu.leafhomestay.service.BedTypeService;
+import mum.edu.leafhomestay.service.HomestayService;
 import mum.edu.leafhomestay.service.HomestayTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import mum.edu.leafhomestay.service.HomestayService;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,10 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.io.File;
-import java.nio.charset.Charset;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/host")
@@ -42,7 +39,7 @@ public class HostController {
     @Autowired
     ServletContext servletContext;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/homestays", method = RequestMethod.GET)
     public String dashboard(Model model) {
         List<Homestay> homestayList = homestayService.getAllHomeStay();
         model.addAttribute("homestayList", homestayList);
@@ -67,7 +64,10 @@ public class HostController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addNewHomeStay(@Valid @ModelAttribute("newHomestay") Homestay newHomestay, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+    public String addNewHomeStay(@Valid @ModelAttribute("newHomestay") Homestay newHomestay,
+                                 BindingResult result,
+                                 Model model,
+                                 RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
             initData(model);
@@ -82,7 +82,7 @@ public class HostController {
         if (imageData != null && !imageData.isEmpty()) {
             try {
                 String rootDirectory = servletContext.getRealPath("/");
-                String fileName = rootDirectory + "\\resources\\images\\" + imageData.getOriginalFilename();
+                String fileName = rootDirectory + "/resources/images/" + imageData.getOriginalFilename();
                 newHomestay.setCoverImage(imageData.getOriginalFilename());
                 imageData.transferTo(new File(fileName));
             } catch (Exception e) {

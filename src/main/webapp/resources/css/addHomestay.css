@@ -1,0 +1,9 @@
+.form-error-message {
+    color: red;
+}
+
+input {
+    margin-bottom:3px;
+    padding:10px;
+    border:1px solid #CCC
+}

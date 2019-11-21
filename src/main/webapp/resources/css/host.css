@@ -6,6 +6,10 @@
     float: left
 }
 
+.image {
+    margin-right: 10px;
+}
+
 .image img {
     width: 200px;
     height: 100px

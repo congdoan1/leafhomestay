@@ -10,10 +10,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <link href="<spring:url value="/resource/css/host.css"/>" type="text/css" rel="stylesheet">
-    <title>Title</title>
-</head>
+
+<link href="<spring:url value="/resource/css/host.css"/>" type="text/css" rel="stylesheet">
+
 <body>
 <div class="form-container">
     <div class="homestay-detail-title"><spring:message code="homestay.title"/></div>
@@ -59,7 +58,7 @@
     <div class="homestay-detail-title"><spring:message code="homestay.address.street"/></div>
     <div class="homestay-detail-item"> ${homestay.address.street}</div>
 
-    <div><a href="<spring:url value='/host'/>"> Dash board</a></div>
+    <div><a href="<spring:url value='/host/homestays'/>">Go to list homestays</a></div>
 </div>
 
 </body>

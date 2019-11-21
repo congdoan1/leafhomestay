@@ -10,7 +10,7 @@
     <title>Sign-In</title>
 </head>
 <body>
-<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background.jpg' />" alt="background"> </div>
+<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background1.jpg' />" alt="background"> </div>
 <div class="form-container signin">
     <h1 class="logoText">Leaf</h1>
 
@@ -23,6 +23,14 @@
         <div class="form-item">
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
+
+            <c:if test="${not empty error}">
+                <div class="alert alert-danger">
+                    <p class="text-danger">
+                        Email and or password is wrong!
+                    </p>
+                </div>
+            </c:if>
 
         <div class="form-item submitBtn">
             <input type="submit" value="Login">

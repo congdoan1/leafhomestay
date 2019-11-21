@@ -10,11 +10,12 @@
     <title>Sign-Up</title>
 </head>
 <body>
-<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background.jpg' />" alt="background"> </div>
+<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background1.jpg' />" alt="background"> </div>
 <div class="form-container signup">
     <h1 class="logoText">Leaf</h1>
 
     <form:form modelAttribute="User">
+
         <div class="form-item">
             <form:input id="email" path="email" type="text" placeholder="Email"/>
             <form:errors path="email" cssClass="text-danger"/>
@@ -56,13 +57,13 @@
 
         <div class="form-item">
             <form:input path="matchingPassword" type="password" id="matchingPassword" placeholder="Confirm password"/>
-            <form:errors cssClass="text-danger"/>
+            <form:errors path="matchingPassword" cssClass="text-danger"/>
         </div>
 
         <div class="form-item">
             <div class="rememberMeContainer buttomText flexRow flexStart">
-                <form:radiobutton id="rolehost" name="role" value="ROLE_HOST" path="selectedRole"/> <label for="rolehost"> Host </label> <br>
-                <form:radiobutton id="roleguest" name="role" value="ROLE_GUEST" path="selectedRole"/> <label for="roleguest"> Guest </label> <br>
+                <form:radiobutton checked="checked" id="rolehost" name="role" value="2" path="selectedRole"/> <label for="rolehost"> Host </label> <br>
+                <form:radiobutton id="roleguest" name="role" value="3" path="selectedRole"/> <label for="roleguest"> Guest </label> <br>
                 <form:errors path="roles" cssClass="text-danger"/>
             </div>
         </div>

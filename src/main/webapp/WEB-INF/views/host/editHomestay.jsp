@@ -19,7 +19,7 @@
 <div class="form-container">
 
     <%--@elvariable id="editHomestay" type="mum.edu.leafhomestay.domain.Homestay"--%>
-    <form:form modelAttribute="editHomestay" action="${editHomestay.id}" method="post" enctype="multipart/form-data">
+    <form:form modelAttribute="editHomestay" action="${editHomestay.id}?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
 
         <fieldset>
             <legend><spring:message code="homestay.edit"/></legend>

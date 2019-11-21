@@ -1,11 +1,17 @@
 package mum.edu.leafhomestay.domain;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+
 
 @Entity(name = "user")
 public class User implements Serializable {
@@ -16,14 +22,20 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Email
+	@NotBlank
 	private String email;
 
 	private String phone;
 
+	@NotBlank
 	private String password;
 
 	@Transient
 	private String matchingPassword;
+
+	@Transient
+	private int selectedRole;
 
 	public String getMatchingPassword() {
 		return matchingPassword;
@@ -33,10 +45,11 @@ public class User implements Serializable {
 		this.matchingPassword = matchingPassword;
 	}
 
+	@NotBlank
 	private String firstName;
-
+	@NotBlank
 	private String lastName;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private int status;
@@ -47,7 +60,7 @@ public class User implements Serializable {
 	@JoinTable(name = "user_role",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-	private Set<Role> roles;
+	private List<Role> roles = new ArrayList<Role>();
 
 	@OneToMany(mappedBy = "user")
 	private Set<Wishlist> wishlists;
@@ -130,11 +143,11 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -154,5 +167,11 @@ public class User implements Serializable {
 		this.bookings = bookings;
 	}
 
+	public int getSelectedRole() {
+		return selectedRole;
+	}
 
+	public void setSelectedRole(int selectedRole) {
+		this.selectedRole = selectedRole;
+	}
 }

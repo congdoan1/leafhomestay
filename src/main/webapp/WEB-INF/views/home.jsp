@@ -23,13 +23,13 @@
                         <li><a href="<spring:url value="/host/homestays" />"><spring:message
                                 code="navigation.homestays"/></a>
                         </li>
-                        <li><a href="<spring:url value="/host/booking" />"><spring:message
+                        <li><a href="<spring:url value="/#" />"><spring:message
                                 code="navigation.booking"/></a></li>
                     </security:authorize>
                     <security:authorize access="hasRole('ROLE_GUEST')">
                         <li><a href="<spring:url value="/homestays/wishlist" />"><spring:message
                                 code="navigation.wishlist"/></a></li>
-                        <li><a href="<spring:url value="/booking" />"><spring:message code="navigation.booking"/></a>
+                        <li><a href="<spring:url value="/#" />"><spring:message code="navigation.booking"/></a>
                         </li>
                     </security:authorize>
                     <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>
@@ -42,8 +42,7 @@
                     </li>
                 </security:authorize>
                 <security:authorize access="isAnonymous()">
-                    <li><a href="<spring:url value="/home" />"><spring:message code="navigation.host"/></a></li>
-                    <li><a href="<spring:url value="/signup" />"><spring:message code="navigation.signup"/></a>
+                    <li><a href="<spring:url value="/register" />"><spring:message code="navigation.signup"/></a>
                     </li>
                     <li><a href="<spring:url value="/login" />"><spring:message code="navigation.signin"/></a></li>
                 </security:authorize>
