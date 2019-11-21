@@ -17,4 +17,9 @@ public class HomestayTypeServiceImpl implements HomestayTypeService {
     public List<HomestayType> findAll() {
         return (List<HomestayType>) homestayTypeRespository.findAll();
     }
+
+    @Override
+    public HomestayType getHomestayType(long id) {
+        return homestayTypeRespository.findById(id).orElse(null);
+    }
 }

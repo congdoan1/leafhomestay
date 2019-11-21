@@ -18,4 +18,9 @@ public class BedTypeServiceImpl implements BedTypeService {
     public List<BedType> findAll() {
         return (List<BedType>) bedTypeRepository.findAll();
     }
+
+    @Override
+    public BedType getBedType(long id) {
+        return bedTypeRepository.findById(id).orElse(null);
+    }
 }

@@ -41,6 +41,7 @@ public class Persistence {
 		factoryBean.setPackagesToScan(new String[] { environment.getProperty("entityManager.domain") });
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setShowSql(true);
+		vendorAdapter.setGenerateDdl(true);
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 		factoryBean.setJpaProperties(getJpaProperties());
 		return factoryBean;

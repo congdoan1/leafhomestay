@@ -11,17 +11,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="<spring:url value="/resource/css/host.css"/>" type="text/css" rel="stylesheet">
     <%--    <link rel="stylesheet" href="<spring:url value='/resource/files/auth.css'/>">--%>
-    <title><spring:message code="homestay.addNew"/></title>
+    <title><spring:message code="homestay.edit"/></title>
 </head>
 <body>
 <div class="form-container">
 
-    <%--@elvariable id="newHomestay" type="mum.edu.leafhomestay.domain.Homestay"--%>
-    <form:form modelAttribute="newHomestay" action="add" method="post" enctype="multipart/form-data">
+    <%--@elvariable id="editHomestay" type="mum.edu.leafhomestay.domain.Homestay"--%>
+    <form:form modelAttribute="editHomestay" action="${editHomestay.id}" method="post" enctype="multipart/form-data">
 
         <fieldset>
-            <legend><spring:message code="homestay.addNew"/></legend>
+            <legend><spring:message code="homestay.edit"/></legend>
             <div class="form-item">
                 <label><spring:message code="homestay.title"/></label>
                 <form:input type="text" id="title" path="title"/>
@@ -79,19 +80,19 @@
                 <form:input type="number" id="maximumguest" path="maximumGuest"/>
                 <form:errors path="maximumGuest" cssClass="form-error-message"/>
             </div>
-
             <div class="form-item">
                 <label><spring:message code="homestay.coverImage"/></label>
+                <form:hidden path="coverImage"/>
                 <form:input type="file" id="coverImageData" path="coverImageData"/>
                 <form:errors path="coverImageData" cssClass="form-error-message"/>
             </div>
 
-<%--            <div class="form-item">--%>
-<%--                <label><spring:message code="homestay.amenity"/></label>--%>
-<%--                <c:forEach items="${amenityList}" var="item">--%>
+                <%--            <div class="form-item">--%>
+                <%--                <label><spring:message code="homestay.amenity"/></label>--%>
+                <%--                <c:forEach items="${amenityList}" var="item">--%>
 
-<%--                    <form:checkbox path="amenities" value="${item.id}" label="${item.name}"/> </c:forEach>--%>
-<%--            </div>--%>
+                <%--                    <form:checkbox path="amenities" value="${item.id}" label="${item.name}"/> </c:forEach>--%>
+                <%--            </div>--%>
 
             <div class="form-item">
                 <label><spring:message code="homestay.price"/></label>
@@ -101,6 +102,7 @@
 
 
             <div class="form-item">
+                <form:hidden path="address.id"/>
                 <label><spring:message code="address.country"/></label>
                 <form:input type="text" id="country" path="address.country"/>
                 <form:errors path="address.country" cssClass="form-error-message"/>
@@ -117,7 +119,6 @@
                 <form:input type="text" id="state" path="address.city"/>
                 <form:errors path="address.city" cssClass="form-error-message"/>
             </div>
-
 
             <div class="form-item">
                 <label><spring:message code="address.street"/></label>

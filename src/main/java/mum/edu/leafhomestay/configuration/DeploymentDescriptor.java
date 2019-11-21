@@ -14,7 +14,8 @@ public class DeploymentDescriptor implements WebApplicationInitializer {
 	public void onStartup(ServletContext container) {
 		// Create the 'root' Spring application context
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(Service.class, Persistence.class, Security.class, TilesConfig.class);
+//		rootContext.register(Service.class, Persistence.class, Security.class, TilesConfig.class);
+		rootContext.register(Service.class, Persistence.class, Security.class);
 
 		// Manage the lifecycle of the root application context
 		container.addListener(new ContextLoaderListener(rootContext));
@@ -29,7 +30,7 @@ public class DeploymentDescriptor implements WebApplicationInitializer {
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 
-		container.addFilter("springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"))
-				.addMappingForUrlPatterns(null, false, "/*");
+//		container.addFilter("springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"))
+//				.addMappingForUrlPatterns(null, false, "/*");
 	}
 }
