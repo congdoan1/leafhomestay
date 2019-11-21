@@ -9,6 +9,7 @@
 
 .cover img {
     width: 100%;
+    height: 600px;
 }
 
 #booking-container {
@@ -28,24 +29,20 @@
 }
 
 #booking-container .form .form-inside .form-control {
-    font-size: inherit;
-    line-height: inherit;
-    height: 2.6em;
-    border-radius: 2px;
-    border-color: #dbd8d6;
-    box-shadow: none;
-    padding: 0 0.2em;
-    margin-top: 20px;
+    margin-bottom:3px;
+    padding:10px;
+    width: 100%;
+    border:1px solid #CCC
 }
 
 #booking-container .form .form-inside .form-control .date {
-    width: 37%;
+    box-sizing:border-box;
+    width: 48%;
     display: inline-block;
 }
 
 #booking-container .form .form-inside .form-control .number-of-guest {
-    width: 18%;
-    display: inline-block;
+    width: 100%;
 }
 
 #booking-container .button {
@@ -59,3 +56,8 @@
     width: 100%;
     color: #FFFFFF;
 }
+
+.host {
+    margin-top: 30px;
+}
+

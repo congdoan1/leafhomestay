@@ -60,6 +60,8 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/login/register").permitAll()
+                .antMatchers("/search**").permitAll()
+                .antMatchers("/homestays/{\\\\d+}").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login")

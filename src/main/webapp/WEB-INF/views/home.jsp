@@ -20,7 +20,8 @@
             <ul>
                 <security:authorize access="isAuthenticated()">
                     <security:authorize access="hasRole('ROLE_HOST')">
-                        <li><a href="<spring:url value="/host/homestays" />"><spring:message code="navigation.homestays"/></a>
+                        <li><a href="<spring:url value="/host/homestays" />"><spring:message
+                                code="navigation.homestays"/></a>
                         </li>
                         <li><a href="<spring:url value="/host/booking" />"><spring:message
                                 code="navigation.booking"/></a></li>
@@ -34,7 +35,7 @@
                     <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>
                     </li>
                     <li>
-                        <spring:url value="/logout" var="logout_url" />
+                        <spring:url value="/logout" var="logout_url"/>
                         <form:form action="${logout_url}" method="post">
                             <input type="submit" value="Logout">
                         </form:form>
@@ -69,7 +70,7 @@
                                placeholder="To" type="date" required/>
                         <select class="form-control number-of-guest" name="numberOfGuest">
                             <c:forEach items="${[1,2,3,4,5,6,7]}" var="item">
-                                <option value="${item}">${item}</option>
+                                <option value="${item}">${item} Guest${item > 1 ? 's' : ''}</option>
                             </c:forEach>
                         </select>
                     </div>

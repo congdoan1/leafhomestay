@@ -29,17 +29,22 @@
         </div>
     </div>
     <div id="booking-container">
-        <h3>100$/2 nights</h3>
+        <h3>$${homestay.price} / night</h3>
         <div class="form">
             <div class="form-inside">
-                <form:form modelAttribute="search" action="booking" method="post">
+                <spring:url value="/homestays/${homestay.id}/book" var="bookinbg_url"/>
+                <form:form modelAttribute="booking" action="${bookinbg_url}" method="post">
                     <div>
-                        <form:input id="dateFrom" class="form-control date" path="dateFrom" type="date"/>
-                        <form:input id="dateFrom" class="form-control  date" path="dateTo" type="date"/>
-                        <form:input id="numberOfGuest" class="form-control number-of-guest" path="numberOfGuest" type="text"/>
+                        <form:input id="dateFrom" class="form-control date" path="checkInDate" type="date"/>
+                        <form:input id="dateFrom" class="form-control  date" path="checkOutDate" type="date"/>
                     </div>
+<%--                    <form:input id="numberOfGuest" class="form-control number-of-guest" path="numberOfGuest" type="text"/>--%>
                     <div>
                         <input type="submit" value="Book Now" class="button">
+                    </div>
+
+                    <div class="host">
+                        <h3>${homestay.owner.firstName} ${homestay.owner.lastName}</h3>
                     </div>
                 </form:form>
             </div>

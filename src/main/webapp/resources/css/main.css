@@ -51,5 +51,14 @@ a:hover {
 }
 
 #content-wrap {
-    padding-bottom: 2.5rem;    /* Footer height */
+    padding-bottom: 2.5rem;
+}
+
+input {
+    font-size: inherit;
+    line-height: inherit;
+    border-radius: 2px;
+    border-color: #dbd8d6;
+    box-shadow: none;
+    padding: 10px;
 }

@@ -1,39 +1,54 @@
 package mum.edu.leafhomestay.controller;
 
-import javax.validation.Valid;
-
+import mum.edu.leafhomestay.domain.Booking;
+import mum.edu.leafhomestay.domain.Payment;
+import mum.edu.leafhomestay.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import mum.edu.leafhomestay.domain.Payment;
-import mum.edu.leafhomestay.service.PaymentService;
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Controller
+@RequestMapping("/payment")
 public class PaymentController {
-	@Autowired
-	PaymentService paymentService;
-	
-	@RequestMapping(value="/paymentform", method=RequestMethod.GET)
-	
-	public String  getPaymentForm() {
-		return "PaymentForm";
-	}
-	@RequestMapping(value="/paymentform", method=RequestMethod.POST)
-	public void  savePaymentForm(@Valid@ModelAttribute("payment")Payment payment,BindingResult result,RedirectAttributes redirect) {
-		if(result.hasErrors()) {
-			
-			/* return "PaymentForm"; */
-			System.out.println("error");
-		}
-	//	redirect.addFlashAttribute("payments", )
-		paymentService.savePayment(payment);
-		
-		
-	}
+
+    @Autowired
+    private PaymentService paymentService;
+
+    @RequestMapping(value = "/paymentform", method = RequestMethod.GET)
+    public String getPaymentForm(@ModelAttribute("payment") Payment payment, Model model) {
+
+        Booking booking = (Booking) model.asMap().get("booking");
+
+        payment.setBooking(booking);
+        payment.setDate(LocalDate.now());
+        payment.setTotalAmount(booking.getTotalPrice());
+
+        return "/PaymentForm";
+    }
+
+    @RequestMapping(value = "/paymentform", method = RequestMethod.POST)
+    public String savePaymentForm(@Valid @ModelAttribute("payment") Payment payment,
+                                  BindingResult result,
+                                  RedirectAttributes redirectAttributes,
+                                  Model model) {
+        if (result.hasErrors()) {
+
+            return "/PaymentForm";
+        }
+
+        payment.setPaymentDate(LocalDateTime.now());
+        paymentService.savePayment(payment);
+
+        return "redirect:/home";
+    }
 
 }

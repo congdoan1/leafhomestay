@@ -1,15 +1,11 @@
 package mum.edu.leafhomestay.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -25,30 +21,29 @@ public class Booking implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotEmpty(message = "{NotEmpty.user}")
 	@Valid
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@NotEmpty(message = "{NotEmpty.homesty}")
 	@Valid
 	@ManyToOne
 	@JoinColumn(name = "homestay_id")
 	private Homestay homestay;
 
 	@NotNull(message = "{NotNull.checkInDate}")
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
-	private LocalDateTime checkInDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkInDate;
 
 	@NotNull(message = "{NotNull.checkOutDate}")
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
-	private LocalDateTime checkOutDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkOutDate;
 
-	@NotNull
-	private double totalPrice;
+	private Double totalPrice;
 
-	@NotEmpty(message = "{NotEmpty.payment}")
+	@Transient
+	private int numberOfGuest;
+
 	@Valid
 	@OneToOne
 	@JoinColumn
@@ -78,27 +73,43 @@ public class Booking implements Serializable {
 		this.homestay = homestay;
 	}
 
-	public LocalDateTime getCheckInDate() {
+	public LocalDate getCheckInDate() {
 		return checkInDate;
 	}
 
-	public void setCheckInDate(LocalDateTime checkInDate) {
+	public void setCheckInDate(LocalDate checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
-	public LocalDateTime getCheckOutDate() {
+	public LocalDate getCheckOutDate() {
 		return checkOutDate;
 	}
 
-	public void setCheckOutDate(LocalDateTime checkOutDate) {
+	public void setCheckOutDate(LocalDate checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 
-	public double getTotalPrice() {
-
-		this.totalPrice = this.homestay.getPrice()
-				* (this.getCheckOutDate().getDayOfYear() - this.getCheckInDate().getDayOfYear());
-		return totalPrice;
+	public Double getTotalPrice() {
+		return this.homestay.getPrice() * (checkInDate.until(checkOutDate, ChronoUnit.DAYS));
 	}
 
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+	public int getNumberOfGuest() {
+		return numberOfGuest;
+	}
+
+	public void setNumberOfGuest(int numberOfGuest) {
+		this.numberOfGuest = numberOfGuest;
+	}
 }

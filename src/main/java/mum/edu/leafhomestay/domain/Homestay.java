@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -35,19 +36,13 @@ public class Homestay implements Serializable {
     @Min(value = 1)
     private int maximumGuest;
 
-    //    @NotNull
     private double area;
 
-    //    @NotNull
     private int status = HomestayStatus.PENDING.ordinal();
 
-    //    @NotNull
-//    @Size(min = 1, message = "{homestay.size}")
     @Range(min = 1,max = 10)
     private int numberOfRoom;
 
-    //    @NotNull
-//    @Size(min = 1, message = "{homestay.size}")
     @Min(value = 1)
     private int numberOfBed;
 
@@ -57,9 +52,8 @@ public class Homestay implements Serializable {
 
     private int numberOfBathroom;
 
-    //    @NotNull
-//    @Size(min = 1, message = "{homestay.price}")
-    private int price;
+    @NotNull
+    private Double price;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
@@ -176,11 +170,11 @@ public class Homestay implements Serializable {
         this.numberOfBathroom = numberOfBathroom;
     }
 
-    public int getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

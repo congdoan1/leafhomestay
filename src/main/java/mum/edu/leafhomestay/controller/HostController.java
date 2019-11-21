@@ -42,7 +42,7 @@ public class HostController {
     @Autowired
     ServletContext servletContext;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dashboard(Model model) {
         List<Homestay> homestayList = homestayService.getAllHomeStay();
         model.addAttribute("homestayList", homestayList);
