@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import mum.edu.leafhomestay.service.UserService;
 
-import java.util.Optional;
-
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
