@@ -13,7 +13,8 @@
 </head>
 <body>
 
-<img src="<spring:url value="/resource/images/logo.jpg"  htmlEscape="true" />" alt="Page not found  JSP!!!"  />
+
+<img src="<spring:url value="/resource/images/logo.png"  htmlEscape="true" />" alt="Page not found  JSP!!!"  />
 
 <H2 class="form-error">${errorMessage}</H2>
 <H3> ${url}</h3>
