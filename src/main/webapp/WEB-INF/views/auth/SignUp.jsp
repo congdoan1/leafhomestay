@@ -57,12 +57,12 @@
 
         <div class="form-item">
             <form:input path="matchingPassword" type="password" id="matchingPassword" placeholder="Confirm password"/>
-            <form:errors cssClass="text-danger"/>
+            <form:errors path="matchingPassword" cssClass="text-danger"/>
         </div>
 
         <div class="form-item">
             <div class="rememberMeContainer buttomText flexRow flexStart">
-                <form:radiobutton id="rolehost" name="role" value="2" path="selectedRole"/> <label for="rolehost"> Host </label> <br>
+                <form:radiobutton checked="checked" id="rolehost" name="role" value="2" path="selectedRole"/> <label for="rolehost"> Host </label> <br>
                 <form:radiobutton id="roleguest" name="role" value="3" path="selectedRole"/> <label for="roleguest"> Guest </label> <br>
                 <form:errors path="roles" cssClass="text-danger"/>
             </div>

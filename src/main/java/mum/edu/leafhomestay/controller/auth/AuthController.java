@@ -40,6 +40,15 @@ public class AuthController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addNewUser(@Valid @ModelAttribute("User") User user, BindingResult bindingResult, Model model) {
 
+        User userExists = service.getUserByEmail(user.getEmail());
+        if(userExists != null){
+            bindingResult.rejectValue("email","error.email","Email address is already in use");
+        }
+
+        if(!user.getPassword().equals(user.getMatchingPassword())){
+            bindingResult.rejectValue("matchingPassword","error.matchinPassing","Passwords does not match");
+        }
+
         if (bindingResult.hasErrors()) {
             System.out.println("binding error");
             return "auth/SignUp";
