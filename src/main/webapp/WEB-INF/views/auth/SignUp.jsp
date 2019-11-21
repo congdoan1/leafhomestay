@@ -10,7 +10,7 @@
     <title>Sign-Up</title>
 </head>
 <body>
-<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background.jpg' />" alt="background"> </div>
+<div class="backgroundImage"> <img src="<spring:url value='/resource/files/background1.jpg' />" alt="background"> </div>
 <div class="form-container signup">
     <h1 class="logoText">Leaf</h1>
 
