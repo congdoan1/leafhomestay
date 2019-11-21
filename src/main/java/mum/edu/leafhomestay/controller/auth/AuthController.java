@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -53,11 +54,15 @@ public class AuthController {
         // user.setMatchingPassword(passwordEncoder.encode(user.getMatchingPassword()));
 
         service.addUser(user);
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/failed", method = RequestMethod.GET)
     public String LoginFailed(Model model) {
+        model.addAttribute("error","true");
+
+        System.out.println("Failed");
+
         return "login";
     }
 

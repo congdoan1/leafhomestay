@@ -24,6 +24,14 @@
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
 
+            <c:if test="${not empty error}">
+                <div class="alert alert-danger">
+                    <p class="text-danger">
+                        Email and or password is wrong!
+                    </p>
+                </div>
+            </c:if>
+
         <div class="form-item submitBtn">
             <input type="submit" value="Login">
         </div>
