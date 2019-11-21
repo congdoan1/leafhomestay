@@ -86,7 +86,6 @@ form{
     margin-top: 5px;
     padding-left: 15px;
     text-shadow: .5px .5px rgba(0, 0, 0, .6);
-    display: none;
 }
 
 .form-item input[type=text], input[type=password], input[type=date], select{

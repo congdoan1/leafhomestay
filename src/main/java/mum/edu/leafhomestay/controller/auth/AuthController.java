@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Optional;
+import java.util.Set;
 
 @Controller
+@RequestMapping("/login")
 public class AuthController {
 
     @Autowired
@@ -23,85 +26,52 @@ public class AuthController {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"","/","/login"}, method = RequestMethod.GET)
     public String getSignInPage() {
-
-        System.out.println("Login GET is working!");
-
         return "login";
     }
-
-    @RequestMapping(value = "/failed", method = RequestMethod.GET)
-    public String LoginFailed(Model model) {
-
-        //model.addAttribute("error","true");
-        System.out.println("Fail is working!");
-
-        return "login";
-    }
-
-    @RequestMapping(value = "/failed", method = RequestMethod.POST)
-    public String LoginFailedPost(Model model) {
-
-        //model.addAttribute("error","true");
-        System.out.println("Fail POST is working!");
-
-        return "login";
-    }
-
-    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-    public String AccessDenied(Model model) {
-
-        System.out.println("accessDenied GET request");
-
-        return "accessDenied";
-    }
-
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String getSignUpPage(@ModelAttribute("User") User user) {
-
         return "auth/SignUp";
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(Model model) {
-        return "redirect:/home";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addNewUser(@Valid @ModelAttribute("User") User user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
+            System.out.println("binding error");
             return "auth/SignUp";
         }
 
-        Role newUserRole = new Role();
-        //newUserRole.setEmail(user.getEmail());
-        //newUserRole.setAuthority(user.getSelectedRole());
+        Long selectedRole = Long.valueOf(user.getSelectedRole());
+        Role userRole = service.getRoleById(selectedRole);
 
-        user.getRoles().add(newUserRole);
+        user.getRoles().add(userRole);
         user.setStatus(1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         // user.setMatchingPassword(passwordEncoder.encode(user.getMatchingPassword()));
 
         service.addUser(user);
-
-        //user = createUserAccount(user, bindingResult);
-        //if (user == null) {
-        //    bindingResult.rejectValue("email", "Email is already in use");
-        //}
         return "/login";
     }
 
-    //private User createUserAccount(User user, BindingResult result) {
-    //    User registered = null;
-    //    try {
-    //        registered = service.register(user);
-    //    } catch (Exception e) {
-    //        return null;
-    //    }
-    //    return registered;
-    //}
+    @RequestMapping(value = "/failed", method = RequestMethod.GET)
+    public String LoginFailed(Model model) {
+        return "login";
+    }
+
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+    public String AccessDenied(Model model) {
+        return "accessDenied";
+    }
+
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model) {
+        return "redirect:/home";
+    }
+
+
 
 }
