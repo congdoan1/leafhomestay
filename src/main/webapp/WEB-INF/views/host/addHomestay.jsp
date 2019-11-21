@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dell
@@ -10,21 +11,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <%--    <link rel="stylesheet" href="<spring:url value='/resource/files/auth.css'/>">--%>
-    <title><spring:message code="homestay.addNew"/></title>
-</head>
+
+<link href="<spring:url value="/resource/css/addHomestay.css"/>" type="text/css" rel="stylesheet">
+
 <body>
 <div class="form-container">
 
-    <%--@elvariable id="newHomestay" type="mum.edu.leafhomestay.domain.Homestay"--%>
-    <form:form modelAttribute="newHomestay" action="add" method="post" enctype="multipart/form-data">
-
+    <form:form modelAttribute="newHomestay" action="add?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend><spring:message code="homestay.addNew"/></legend>
+
+            <p>
+                <form:errors path="*" cssClass="form-error-message"/>
+            </p>
+
             <div class="form-item">
                 <label><spring:message code="homestay.title"/></label>
-                <form:input type="text" id="title" path="title"/>
+                <form:input type="text" id="title" path="title" size="30"/>
                 <form:errors path="title" cssClass="form-error-message"/>
             </div>
 
@@ -37,7 +40,7 @@
 
             <div class="form-item">
                 <label><spring:message code="homestay.overview"/></label>
-                <form:input type="text" id="overview" path="overview"/>
+                <form:input type="text" id="overview" path="overview" size="30"/>
                 <form:errors path="overview" cssClass="form-error-message"/>
             </div>
 
@@ -86,12 +89,12 @@
                 <form:errors path="coverImageData" cssClass="form-error-message"/>
             </div>
 
-<%--            <div class="form-item">--%>
-<%--                <label><spring:message code="homestay.amenity"/></label>--%>
-<%--                <c:forEach items="${amenityList}" var="item">--%>
+                <%--            <div class="form-item">--%>
+                <%--                <label><spring:message code="homestay.amenity"/></label>--%>
+                <%--                <c:forEach items="${amenityList}" var="item">--%>
 
-<%--                    <form:checkbox path="amenities" value="${item.id}" label="${item.name}"/> </c:forEach>--%>
-<%--            </div>--%>
+                <%--                    <form:checkbox path="amenities" value="${item.id}" label="${item.name}"/> </c:forEach>--%>
+                <%--            </div>--%>
 
             <div class="form-item">
                 <label><spring:message code="homestay.price"/></label>

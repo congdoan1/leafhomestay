@@ -11,14 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.Optional;
-import java.util.Set;
 
 @Controller
-@RequestMapping("/login")
 public class AuthController {
 
     @Autowired
@@ -27,9 +23,9 @@ public class AuthController {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    @RequestMapping(value = {"","/","/login"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getSignInPage() {
-        return "login";
+        return "/login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -77,9 +73,13 @@ public class AuthController {
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
     public String AccessDenied(Model model) {
-        return "accessDenied";
+        return "errors/accessDenied";
     }
 
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.POST)
+    public String accessDenied() {
+        return "errors/forbidden";
+    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Model model) {

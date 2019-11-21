@@ -62,3 +62,15 @@ input {
     box-shadow: none;
     padding: 10px;
 }
+
+.button {
+    margin-top: 20px;
+    padding: 1em 3em;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    background-color: #6ea66d;
+    /*width: 100%;*/
+    color: #FFFFFF;
+}
