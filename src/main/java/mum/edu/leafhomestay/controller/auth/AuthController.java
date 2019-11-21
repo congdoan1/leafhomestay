@@ -62,7 +62,7 @@ public class AuthController {
         return "login";
     }
 
-    @RequestMapping(value = "/failed", method = RequestMethod.GET)
+    @RequestMapping(value = "/login/failed", method = RequestMethod.GET)
     public String LoginFailed(Model model) {
         model.addAttribute("error","true");
 

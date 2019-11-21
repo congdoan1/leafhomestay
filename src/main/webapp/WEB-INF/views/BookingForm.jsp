@@ -28,7 +28,7 @@
             <p><spring:message code="price"/> $${booking.homestay.price} / night</p>
 
             <p id="buttons">
-                <input id="submit" type="submit" value="Book">
+                <input id="submit" type="submit" value="Go payment">
             </p>
         </fieldset>
     </form:form>

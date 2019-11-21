@@ -44,6 +44,7 @@ public class Security extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/login**").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/search**").permitAll()
                 .antMatchers("/homestays/{\\\\d+}").permitAll()
                 .antMatchers("/host/*").hasRole("HOST")

@@ -21,9 +21,9 @@
             <form:errors path="paymentDate" cssStyle="color : red;"/>
 
             Payment Type?
-            <input type="radio" name="paymentType" value="visa"/>:Visa
-            <input type="radio" name="paymentType" value="masterCard"/>:Master-Card
-            <input type="radio" name="paymentType" value="payPal"/>:PayPal
+            <input type="radio" name="paymentType" value="1"/>Visa
+            <input type="radio" name="paymentType" value="2"/>Master-Card
+            <input type="radio" name="paymentType" value="3"/>PayPal
 
             </p>
             <p>

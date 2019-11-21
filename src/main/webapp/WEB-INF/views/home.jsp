@@ -18,6 +18,11 @@
         </div>
         <div id="menu">
             <ul>
+                <li><a href="<spring:url value="?language=en" />"><spring:message
+                        code="language.en"/></a>
+                </li>
+                <li><a href="<spring:url value="?language=vi" />"><spring:message
+                        code="language.vi"/></a></li>
                 <security:authorize access="isAuthenticated()">
                     <security:authorize access="hasRole('ROLE_HOST')">
                         <li><a href="<spring:url value="/host/homestays" />"><spring:message
@@ -55,7 +60,7 @@
         </div>
         <div class="form">
             <div class="form-inside">
-                <h3>Book a room in a home</h3>
+                <h3><spring:message code="home.search.title"/></h3>
                 <form action="search" method="get">
                     <div>
                         <input class="form-control" name="location"

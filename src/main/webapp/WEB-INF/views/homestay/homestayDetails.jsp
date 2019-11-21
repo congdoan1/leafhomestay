@@ -8,7 +8,7 @@
 
 <body>
 <div class="cover">
-    <img src="<spring:url value="${homestay.coverImage}"/>" alt="cover">
+    <img src="<spring:url value="/resource/images/${homestay.coverImage}"/>" alt="cover">
 </div>
 <div class="content">
     <div id="information">
@@ -32,11 +32,13 @@
         <h3>$${homestay.price} / night</h3>
         <div class="form">
             <div class="form-inside">
-                <spring:url value="/homestays/${homestay.id}/book" var="bookinbg_url"/>
-                <form:form modelAttribute="booking" action="${bookinbg_url}" method="post">
+                <spring:url value="/homestays/${homestay.id}/booking" var="bookinbg_url"/>
+                <form:form modelAttribute="booking" action="${bookinbg_url}" method="get">
                     <div>
+                        <label for="dateFrom">Checkin Date</label><br>
                         <form:input id="dateFrom" class="form-control date" path="checkInDate" type="date"/>
-                        <form:input id="dateFrom" class="form-control  date" path="checkOutDate" type="date"/>
+                        <label for="dateTo">Checkout Date</label><br>
+                        <form:input id="dateTo" class="form-control  date" path="checkOutDate" type="date"/>
                     </div>
 <%--                    <form:input id="numberOfGuest" class="form-control number-of-guest" path="numberOfGuest" type="text"/>--%>
                     <div>

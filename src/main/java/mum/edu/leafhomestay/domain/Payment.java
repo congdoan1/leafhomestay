@@ -16,7 +16,7 @@ public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -31,8 +31,6 @@ public class Payment implements Serializable {
     @NotNull
     private Integer paymentType;
 
-    @Valid
-    @NotNull(message = "{NotNull.Booking}")
     @OneToOne
     @JoinColumn(name = "booking_id")
     private Booking booking;

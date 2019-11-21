@@ -1,10 +1,7 @@
 package mum.edu.leafhomestay.controller;
 
 import mum.edu.leafhomestay.domain.*;
-import mum.edu.leafhomestay.service.AmenityService;
-import mum.edu.leafhomestay.service.BedTypeService;
-import mum.edu.leafhomestay.service.HomestayService;
-import mum.edu.leafhomestay.service.HomestayTypeService;
+import mum.edu.leafhomestay.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.io.File;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -38,6 +36,9 @@ public class HostController {
 
     @Autowired
     ServletContext servletContext;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/homestays", method = RequestMethod.GET)
     public String dashboard(Model model) {
@@ -64,7 +65,8 @@ public class HostController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addNewHomeStay(@Valid @ModelAttribute("newHomestay") Homestay newHomestay,
+    public String addNewHomeStay(Principal principal,
+                                 @Valid @ModelAttribute("newHomestay") Homestay newHomestay,
                                  BindingResult result,
                                  Model model,
                                  RedirectAttributes redirectAttributes) {
@@ -91,6 +93,7 @@ public class HostController {
         }
 
         newHomestay.getAddress().setHomestay(newHomestay);
+        newHomestay.setOwner(userService.getUserByEmail(principal.getName()));
         homestayService.addHomeStay(newHomestay);
         redirectAttributes.addFlashAttribute("homestay", newHomestay);
         return "redirect:/host/detail";

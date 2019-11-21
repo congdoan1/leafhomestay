@@ -15,6 +15,11 @@
         </div>
         <div id="menu">
             <ul>
+                <li><a href="<spring:url value="?language=en" />"><spring:message
+                        code="language.en"/></a>
+                </li>
+                <li><a href="<spring:url value="?language=vi" />"><spring:message
+                        code="language.vi"/></a></li>
                 <security:authorize access="isAuthenticated()">
                     <security:authorize access="hasRole('ROLE_HOST')">
                         <li><a href="<spring:url value="/host/homestays" />"><spring:message

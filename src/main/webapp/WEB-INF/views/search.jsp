@@ -15,7 +15,7 @@
         <c:set var="url" value="/homestays/${homestay.id}"/>
         <a href="<spring:url value="${url}"/>">
             <div class="homestay">
-                <img src="${homestay.coverImage}" alt="home">
+                <img src="<spring:url value="/resource/images/${homestay.coverImage}" />" alt="home">
                 <div class="detail">
                     <h4>${homestay.title}</h4>
                     <span>${homestay.overview}</span>

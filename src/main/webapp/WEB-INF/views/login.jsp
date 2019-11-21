@@ -42,7 +42,7 @@
                 <label for="rememberMe"> Remember me </label>
             </div>
 
-            <a href="<spring:url value="/login/register" />"> <p>Don't have an account?</p> </a>
+            <a href="<spring:url value="/register" />"> <p>Don't have an account?</p> </a>
         </div>
 
 

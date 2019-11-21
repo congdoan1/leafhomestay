@@ -40,6 +40,7 @@ public class PaymentController {
                                   BindingResult result,
                                   RedirectAttributes redirectAttributes,
                                   Model model) {
+
         if (result.hasErrors()) {
 
             return "/PaymentForm";
@@ -48,7 +49,12 @@ public class PaymentController {
         payment.setPaymentDate(LocalDateTime.now());
         paymentService.savePayment(payment);
 
-        return "redirect:/home";
+        redirectAttributes.addFlashAttribute("payment", payment);
+        return "redirect:/payment/success";
     }
 
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
+    public String paymentSuccess() {
+        return "/paymentSuccess";
+    }
 }
