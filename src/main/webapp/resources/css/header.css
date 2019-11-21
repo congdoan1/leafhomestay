@@ -5,7 +5,7 @@
     background-color: #FFFFFF;
     color: white;
     border-bottom: 2px solid #6ea66d;
-    height: 90px;
+    height: 70px;
 }
 
 #header {
@@ -15,10 +15,11 @@
 #logo {
     position: absolute;
     left: 2em;
+    height: 70px;
 }
 
 #logo img {
-    height: 70px;
+    height: 60px;
 }
 
 #menu {

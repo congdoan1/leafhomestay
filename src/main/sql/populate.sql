@@ -31,4 +31,6 @@ INSERT INTO user(id,email,firstName,lastName,password,status) VALUES ('2', 'host
 insert into user_role(user_id,role_id) values(1,3);
 insert into user_role(user_id,role_id) values(2,2);
 
-INSERT INTO homestay(id, area, coverImage, maximumGuest, numberOfBathroom, numberOfBed, numberOfRoom, overview, price, status, title, bedType_id, type_id, owner_id) VALUES (1, 100, 'https://images.unsplash.com/photo-1557899563-1940fc95709c', '3', '1', '2', '1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s', '30', '1', 'Leaf Homestay', 1, 1, 2);
+# INSERT INTO homestay(id, area, coverImage, maximumGuest, numberOfBathroom, numberOfBed, numberOfRoom, overview, price, status, title, bedType_id, type_id, owner_id,address_id) VALUES (1, 100, 'https://images.unsplash.com/photo-1557899563-1940fc95709c', '3', '1', '2', '1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s', '30', '1', 'Leaf Homestay', 1, 1, 2,1);
+# insert into address(id,city,country,state,street,zipcode) values(1,'Fairfield','United States','IA','1000 N.4th str', '52556');
+

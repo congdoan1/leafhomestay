@@ -16,12 +16,13 @@
 }
 
 #logo img {
-    height: 100px;
+    height: 80px;
 }
 
 #menu {
     position: absolute;
     right: 2em;
+    top: 30px;
 }
 
 #menu ul {
@@ -81,6 +82,7 @@
     background: rgba(0, 0, 0, 0.5);
     display: inline-block;
     vertical-align: middle;
+    border-radius: 10px;
 }
 
 #search-container .form h3 {
@@ -92,14 +94,10 @@
 }
 
 #search-container .form .form-inside .form-control {
-    font-size: inherit;
-    line-height: inherit;
-    height: 2.6em;
-    border-radius: 2px;
-    border-color: #dbd8d6;
-    box-shadow: none;
-    width: 100%;
-    padding: 0 0.2em;
+    width: 94%;
+    margin-bottom:3px;
+    padding:10px;
+    border:1px solid #CCC
 }
 
 #search-container .form .form-inside .date-control  {
@@ -107,13 +105,15 @@
 }
 
 #search-container .form .form-inside .date-control .date {
-    width: 37%;
+    width: 34%;
     display: inline-block;
 }
 
 #search-container .form .form-inside .date-control .number-of-guest {
     width: 18%;
     display: inline-block;
+    vertical-align: middle;
+    height: 45px;
 }
 
 #search-container .button {
@@ -124,7 +124,7 @@
     font-weight: 700;
     font-size: 1em;
     background-color: #6ea66d;
-    width: 100%;
+    width: 98%;
     color: #FFFFFF;
 }
 

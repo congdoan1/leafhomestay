@@ -2,6 +2,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <link href="<spring:url value="/resource/css/header.css"/>" rel="stylesheet" type="text/css">
 
@@ -15,8 +16,26 @@
         <div id="menu">
             <ul>
                 <security:authorize access="isAuthenticated()">
-                    <li><a href="<spring:url value="/homestays/wishlist" />"><spring:message code="navigation.wishlist"/></a></li>
+                    <security:authorize access="hasRole('ROLE_HOST')">
+                        <li><a href="<spring:url value="/host/homestays" />"><spring:message
+                                code="navigation.homestays"/></a>
+                        </li>
+                        <li><a href="<spring:url value="/host/booking" />"><spring:message
+                                code="navigation.booking"/></a></li>
+                    </security:authorize>
+                    <security:authorize access="hasRole('ROLE_GUEST')">
+                        <li><a href="<spring:url value="/homestays/wishlist" />"><spring:message
+                                code="navigation.wishlist"/></a></li>
+                        <li><a href="<spring:url value="/booking" />"><spring:message code="navigation.booking"/></a>
+                        </li>
+                    </security:authorize>
                     <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>
+                    </li>
+                    <li>
+                        <spring:url value="/logout" var="logout_url"/>
+                        <form:form action="${logout_url}" method="post">
+                            <input type="submit" value="Logout">
+                        </form:form>
                     </li>
                 </security:authorize>
                 <security:authorize access="isAnonymous()">

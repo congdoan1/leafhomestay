@@ -14,6 +14,7 @@ public class DeploymentDescriptor implements WebApplicationInitializer {
 	public void onStartup(ServletContext container) {
 		// Create the 'root' Spring application context
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+//		rootContext.register(Service.class, Persistence.class, Security.class, TilesConfig.class);
 		rootContext.register(Service.class, Persistence.class, Security.class, TilesConfig.class);
 
 		// Manage the lifecycle of the root application context

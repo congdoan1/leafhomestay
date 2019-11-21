@@ -1,5 +1,8 @@
 package mum.edu.leafhomestay.configuration;
 
+import mum.edu.leafhomestay.formatter.AmenityFormatter;
+import mum.edu.leafhomestay.formatter.BedTypeFormatter;
+import mum.edu.leafhomestay.formatter.HomestayTypeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,8 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -19,7 +24,7 @@ import java.util.Locale;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"mum.edu.leafhomestay.controller"})
+@ComponentScan(basePackages = {"mum.edu.leafhomestay.controller","mum.edu.leafhomestay.exception"})
 @PropertySource(value = "classpath:application.properties")
 public class Dispatcher extends WebMvcConfigurerAdapter {
 
@@ -77,5 +82,32 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
     @Override
     public Validator getValidator() {
         return validator();
+    }
+
+
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter( bedTypeFormatter());
+        registry.addFormatter(homestayTypeFormatter());
+        registry.addFormatter(amenityFormatter());
+    }
+
+    @Bean
+    public BedTypeFormatter bedTypeFormatter() {
+        return new BedTypeFormatter();
+    }
+
+    @Bean
+    public HomestayTypeFormatter homestayTypeFormatter(){return new HomestayTypeFormatter();}
+
+    @Bean
+    public AmenityFormatter amenityFormatter(){return new AmenityFormatter();}
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver createMultipartResolver() {
+        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
     }
 }

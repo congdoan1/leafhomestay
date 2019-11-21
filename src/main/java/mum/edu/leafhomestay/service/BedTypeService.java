@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BedTypeService {
     List<BedType> findAll();
+    BedType getBedType(long id);
 }

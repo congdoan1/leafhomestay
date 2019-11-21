@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface HomestayTypeService {
     List<HomestayType> findAll();
+    HomestayType  getHomestayType(long id);
 }

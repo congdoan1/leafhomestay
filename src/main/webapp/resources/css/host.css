@@ -1,0 +1,27 @@
+.list-homestay {
+    padding: 20px
+}
+
+.list-homestay div {
+    float: left
+}
+
+.image img {
+    width: 200px;
+    height: 100px
+}
+
+
+.form-container {
+    padding: 20px
+}
+
+.homestay-detail-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px
+}
+
+.homestay-detail-item{
+    padding-left: 15px;
+}
