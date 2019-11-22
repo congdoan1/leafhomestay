@@ -17,4 +17,6 @@ public interface HomestayService {
     public List<Homestay> getAllHomeStay();
 
     List<Homestay> getWishlist(String email);
+
+    List<Homestay> getByOwnerId(Long ownerId);
 }

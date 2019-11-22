@@ -28,13 +28,13 @@
                         <li><a href="<spring:url value="/host/homestays" />"><spring:message
                                 code="navigation.homestays"/></a>
                         </li>
-                        <li><a href="<spring:url value="/#" />"><spring:message
+                        <li><a href="<spring:url value="/booking" />"><spring:message
                                 code="navigation.booking"/></a></li>
                     </security:authorize>
                     <security:authorize access="hasRole('ROLE_GUEST')">
                         <li><a href="<spring:url value="/homestays/wishlist" />"><spring:message
                                 code="navigation.wishlist"/></a></li>
-                        <li><a href="<spring:url value="/#" />"><spring:message code="navigation.booking"/></a>
+                        <li><a href="<spring:url value="/booking" />"><spring:message code="navigation.booking"/></a>
                         </li>
                     </security:authorize>
                     <li><a href="<spring:url value="#" />"><security:authentication property="principal.username"/></a>

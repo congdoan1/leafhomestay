@@ -6,14 +6,20 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface HomestayRepository extends CrudRepository<Homestay, Long> {
 
-//    @Query("SELECT h FROM homestay h WHERE h.address.street LIKE %:location%" +
-//            " AND ")
-//    List<Homestay> search(@Param("location") String term, @Param("dateFrom") Date dateFrom, @Param("dateTo") Date dateTo,
-//                          @Param("numberOfGuest") int numberOfGuest);
+    @Query("select distinct h from homestay h, booking b where" +
+            " h.address.street like %:location%" +
+            " and h.id = b.homestay.id and (b.checkInDate not between :dateFrom and :dateTo)" +
+            " and (b.checkOutDate not between :dateFrom and :dateTo)" +
+            " and h.maximumGuest >= :numberOfGuest")
+    List<Homestay> search(@Param("location") String location, @Param("dateFrom") LocalDate dateFrom, @Param("dateTo") LocalDate dateTo,
+                          @Param("numberOfGuest") int numberOfGuest);
+
+    List<Homestay> findByOwnerId(Long ownerId);
 }

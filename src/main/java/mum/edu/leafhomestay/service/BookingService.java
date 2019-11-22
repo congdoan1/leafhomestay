@@ -11,5 +11,6 @@ public interface BookingService {
 	public void saveUserBooking(Booking newbook); 
 	public User findByUserId(Long Id);
 	public Homestay findByHomeStayId(Long Id);
-	
+
+	List<Booking> getByOwner(Long ownerId);
 }

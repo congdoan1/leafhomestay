@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class BookingController {
@@ -79,7 +80,9 @@ public class BookingController {
     public String booking(Principal principal, Model model) {
         User user = userService.getUserByEmail(principal.getName());
 
-        model.addAttribute("bookings", user.getBookings());
+        List<Booking> bookingList = bookingService.getByOwner(user.getId());
+
+        model.addAttribute("bookings", bookingList);
         return "/booking";
     }
 }

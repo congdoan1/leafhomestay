@@ -50,9 +50,11 @@ public class BookingServiceImpl implements BookingService{
 		List<Booking> book=(List<Booking>) bookingRepository.findAll();
 		return  (Homestay)book.stream().filter(s->s.getHomestay().getId().equals(id)).map(s->s.getId()).collect(Collectors.toList());
 	}
-	 
 
-	
+	@Override
+	public List<Booking> getByOwner(Long ownerId) {
+		return bookingRepository.findByUserId(ownerId);
+	}
 }
 	
 	

@@ -37,8 +37,9 @@ public class HomeController {
                          @RequestParam("numberOfGuest") int numberOfGuest,
                          Model model) {
 
-//        List<Homestay> homestays = homestayRepository.search(location, dateFrom, dateTo, numberOfGuest);
-        List<Homestay> homestays = (List<Homestay>) homestayRepository.findAll();
+        System.out.println("location = " + location);
+
+        List<Homestay> homestays = homestayRepository.search(location, dateFrom, dateTo, numberOfGuest);
 
         model.addAttribute("homestays", homestays);
         model.addAttribute("numberOfNights", dateFrom.until(dateTo, ChronoUnit.DAYS));

@@ -41,8 +41,11 @@ public class HostController {
     private UserService userService;
 
     @RequestMapping(value = "/homestays", method = RequestMethod.GET)
-    public String dashboard(Model model) {
-        List<Homestay> homestayList = homestayService.getAllHomeStay();
+    public String dashboard(Principal principal, Model model) {
+
+        User user = userService.getUserByEmail(principal.getName());
+
+        List<Homestay> homestayList = homestayService.getByOwnerId(user.getId());
         model.addAttribute("homestayList", homestayList);
 
         return "host/dashboard";

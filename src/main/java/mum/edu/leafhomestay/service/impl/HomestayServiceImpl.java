@@ -71,4 +71,9 @@ public class HomestayServiceImpl implements HomestayService {
 
         return user.getWishlists().stream().map(Wishlist::getHomestay).collect(Collectors.toList());
     }
+
+    @Override
+    public List<Homestay> getByOwnerId(Long ownerId) {
+        return homeStayRepository.findByOwnerId(ownerId);
+    }
 }
